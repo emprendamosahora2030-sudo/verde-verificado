@@ -166,6 +166,8 @@ Recorrido de un crédito de carbono desde el proyecto hasta el comprador.
 - Propuesta individual de José Luis Olaya: `docs/semana1/JoseLuisOlaya.md`
 
 
+- Asocarbono, "Informe sobre el Estado Actual del Mercado Colombiano de Carbono" (cierre a 30 de junio de 2025): informe compartido internamente por el equipo, usado como fuente de las cifras de demanda, no causación y certificados de la sección "Frecuencia y alcance".
+
 ## Herramientas de asistencia
 
 Para la investigación, estructuración, redacción y coordinación de este documento, el equipo utilizó las siguientes herramientas de asistencia:
