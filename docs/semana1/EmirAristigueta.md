@@ -1,4 +1,4 @@
-# Propuesta individual — Emir Morales
+# Propuesta individual — Emir Aristigueta
 
 ## El problema
 Los usuarios de servicios de energía y los administradores de subredes no pueden verificar de forma independiente su consumo histórico real frente a lo que se les cobra, lo que genera disputas constantes en las que una sola parte tiene el control total de los datos.
