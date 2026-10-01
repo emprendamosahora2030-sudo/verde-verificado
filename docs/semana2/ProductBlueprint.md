@@ -53,7 +53,7 @@ A diferencia de los registros tradicionales, Verde Verificado ofrece verificaci�
 
 ## Backlog priorizado (Kanban)
 
-[Enlace al tablero de GitHub Projects del equipo — crear con las historias priorizadas de todos los integrantes (Daniel, Emir, Lina, José Luis), cada una con criterios de aceptación por tarjeta.]
+Tablero: [Verde Verificado — Backlog](https://github.com/users/emprendamosahora2030-sudo/projects/2) — 7 tareas priorizadas cubriendo los roles del equipo (contrato Soroban, interfaz, pruebas de aceptación, certificado digital, dashboard para el jurado, arquitectura y alianzas institucionales).
 
 ## Arquitectura inicial
 
