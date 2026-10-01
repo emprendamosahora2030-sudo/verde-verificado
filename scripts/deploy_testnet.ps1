@@ -6,7 +6,7 @@ $VerificadorId = "verificador"
 $CompradorId = "comprador"
 $CreditoId = "VV001"
 $Toneladas = "100"
-$Proyecto = "PROY-VV-001"
+$Proyecto = "PROYVV001"
 $BeneficiarioRetiro = "EMPRESA_DEMO"
 
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
