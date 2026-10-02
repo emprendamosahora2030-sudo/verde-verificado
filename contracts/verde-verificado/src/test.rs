@@ -1,4 +1,4 @@
-//! Pruebas del contrato GreenLedger v2.
+//! Pruebas del contrato Verde Verificado v2.
 //!
 //! Convención: `setup()` deja un contrato inicializado con un admin y un
 //! verificador ya autorizados, usando `mock_all_auths()` (cualquier
@@ -20,7 +20,7 @@ fn crear_hash(env: &Env, semilla: u8) -> BytesN<32> {
 
 struct Contexto {
     env: Env,
-    client: GreenLedgerContractClient<'static>,
+    client: Verde VerificadoContractClient<'static>,
     admin: Address,
     verificador: Address,
 }
@@ -31,8 +31,8 @@ fn setup() -> Contexto {
     let env = Env::default();
     env.mock_all_auths();
 
-    let contract_id = env.register(GreenLedgerContract, ());
-    let client = GreenLedgerContractClient::new(&env, &contract_id);
+    let contract_id = env.register(Verde VerificadoContract, ());
+    let client = Verde VerificadoContractClient::new(&env, &contract_id);
 
     let admin = Address::generate(&env);
     let verificador = Address::generate(&env);
@@ -82,8 +82,8 @@ fn admin_puede_agregar_y_quitar_verificador() {
 #[should_panic]
 fn solo_admin_agrega_verificador() {
     let env = Env::default();
-    let contract_id = env.register(GreenLedgerContract, ());
-    let client = GreenLedgerContractClient::new(&env, &contract_id);
+    let contract_id = env.register(Verde VerificadoContract, ());
+    let client = Verde VerificadoContractClient::new(&env, &contract_id);
 
     let admin = Address::generate(&env);
     let intruso = Address::generate(&env);
@@ -195,8 +195,8 @@ fn transferir_credito_falla_si_no_firma_el_propietario() {
     let env = Env::default();
     env.mock_all_auths();
 
-    let contract_id = env.register(GreenLedgerContract, ());
-    let client = GreenLedgerContractClient::new(&env, &contract_id);
+    let contract_id = env.register(Verde VerificadoContract, ());
+    let client = Verde VerificadoContractClient::new(&env, &contract_id);
 
     let admin = Address::generate(&env);
     let verificador = Address::generate(&env);

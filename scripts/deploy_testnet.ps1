@@ -20,7 +20,7 @@ $OutDir = Join-Path $ContractDir "target/deploy"
 Push-Location $ContractDir
 try { stellar contract build --out-dir $OutDir }
 finally { Pop-Location }
-$WasmPath = Join-Path $OutDir "greenledger.wasm"
+$WasmPath = Join-Path $OutDir "verde_verificado.wasm"
 if (-not (Test-Path $WasmPath)) { throw "No se encontro $WasmPath" }
 Write-Host "WASM: $WasmPath"
 

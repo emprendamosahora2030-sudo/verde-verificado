@@ -1,8 +1,8 @@
 [package]
-name = "greenledger"
+name = "verde_verificado"
 version = "2.0.0"
 edition = "2021"
-description = "GreenLedger v2 — registro de créditos de carbono no fungibles en Soroban (Stellar)"
+description = "Verde Verificado v2 — registro de créditos de carbono no fungibles en Soroban (Stellar)"
 license = "Apache-2.0"
 publish = false
 

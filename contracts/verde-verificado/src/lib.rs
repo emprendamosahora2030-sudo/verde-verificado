@@ -1,4 +1,4 @@
-//! GreenLedger v2 — Registro de créditos de carbono no fungibles.
+//! Verde Verificado v2 — Registro de créditos de carbono no fungibles.
 //!
 //! Cada crédito es un activo único con ciclo de vida:
 //! Emitido -> Transferido (0..n veces) -> Retirado (final, irreversible).
@@ -151,10 +151,10 @@ pub enum Error {
 }
 
 #[contract]
-pub struct GreenLedgerContract;
+pub struct Verde VerificadoContract;
 
 #[contractimpl]
-impl GreenLedgerContract {
+impl Verde VerificadoContract {
     /// Inicializa el contrato guardando el admin. Solo puede llamarse una
     /// vez: una segunda llamada falla con `YaInicializado`.
     pub fn initialize(env: Env, admin: Address) -> Result<(), Error> {
