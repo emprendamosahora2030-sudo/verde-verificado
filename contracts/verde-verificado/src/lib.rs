@@ -151,10 +151,10 @@ pub enum Error {
 }
 
 #[contract]
-pub struct Verde VerificadoContract;
+pub struct VerdeVerificadoContract;
 
 #[contractimpl]
-impl Verde VerificadoContract {
+impl VerdeVerificadoContract {
     /// Inicializa el contrato guardando el admin. Solo puede llamarse una
     /// vez: una segunda llamada falla con `YaInicializado`.
     pub fn initialize(env: Env, admin: Address) -> Result<(), Error> {
