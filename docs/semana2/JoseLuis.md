@@ -1,5 +1,7 @@
 # José Luis — Historias de usuario (Fase 1, Semana 2)
 
+**Usuario de GitHub:** `emprendamosahora2030-sudo`
+
 ## Mis historias de usuario
 
 1. Como comprador corporativo que debe compensar emisiones, quiero verificar en tiempo real el estado de un crédito de carbono antes de comprarlo, para asegurarme de que no ha sido vendido dos veces.

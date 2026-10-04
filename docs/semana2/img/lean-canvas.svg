@@ -1,0 +1,254 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" style="background:#06140f; font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#04120c"/>
+      <stop offset="50%" stop-color="#071e14"/>
+      <stop offset="100%" stop-color="#0b2e20"/>
+    </linearGradient>
+    <linearGradient id="card-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f2b20" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0a1d15" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="card-highlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#144130" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#0c261c" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#bg-grad)"/>
+
+  <!-- Top Header Bar -->
+  <g transform="translate(60, 40)">
+    <rect x="0" y="0" width="48" height="48" rx="12" fill="url(#accent-grad)"/>
+    <path d="M24 10 C16 16 14 26 24 38 C34 26 32 16 24 10 Z" fill="#04120c"/>
+    <path d="M24 16 L24 32" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+
+    <text x="65" y="32" fill="#ffffff" font-size="28" font-weight="800" letter-spacing="-0.5">VERDE VERIFICADO</text>
+    <text x="365" y="32" fill="#10b981" font-size="24" font-weight="300">|</text>
+    <text x="385" y="32" fill="#34d399" font-size="22" font-weight="600">LEAN CANVAS ESTRATÉGICO</text>
+    <text x="65" y="58" fill="#94a3b8" font-size="14">Información fiel y exacta a la Sección 5 del Product Blueprint</text>
+
+    <rect x="1560" y="8" width="240" height="36" rx="8" fill="#0f2b20" stroke="#10b981" stroke-width="1.5"/>
+    <circle cx="1580" cy="26" r="5" fill="#10b981"/>
+    <text x="1596" y="31" fill="#e2e8f0" font-size="13" font-weight="600">Stellar Soroban Protocol</text>
+  </g>
+
+  <!-- ================= GRID LAYOUT ================= -->
+  <!-- 1. PROBLEMA (x: 60, y: 120, w: 348, h: 560) -->
+  <g transform="translate(60, 120)" filter="url(#shadow)">
+    <rect width="348" height="560" rx="14" fill="url(#card-grad)" stroke="#1e4636" stroke-width="1.5"/>
+    <rect x="0" y="0" width="348" height="46" rx="14" fill="#123628"/>
+    <rect x="0" y="30" width="348" height="16" fill="#123628"/>
+    <text x="20" y="30" fill="#34d399" font-size="16" font-weight="700">1. PROBLEMA</text>
+    
+    <g transform="translate(20, 75)">
+      <circle cx="5" cy="8" r="3.5" fill="#10b981"/>
+      <text x="18" y="13" fill="#f1f5f9" font-size="13.5" font-weight="600">Doble conteo y doble venta</text>
+      <text x="18" y="33" fill="#cbd5e1" font-size="13">de créditos de carbono.</text>
+
+      <circle cx="5" cy="75" r="3.5" fill="#10b981"/>
+      <text x="18" y="80" fill="#f1f5f9" font-size="13.5" font-weight="600">Falta de trazabilidad pública</text>
+      <text x="18" y="100" fill="#cbd5e1" font-size="13">verificable en tiempo real.</text>
+
+      <circle cx="5" cy="142" r="3.5" fill="#10b981"/>
+      <text x="18" y="147" fill="#f1f5f9" font-size="13.5" font-weight="600">Vulnerabilidad ante fraudes</text>
+      <text x="18" y="167" fill="#cbd5e1" font-size="13">por registros centralizados.</text>
+
+      <circle cx="5" cy="209" r="3.5" fill="#10b981"/>
+      <text x="18" y="214" fill="#f1f5f9" font-size="13.5" font-weight="600">Asimetría de información</text>
+      <text x="18" y="234" fill="#cbd5e1" font-size="13">en comunidades forestales.</text>
+    </g>
+  </g>
+
+  <!-- 4. SOLUCIÓN (x: 423, y: 120, w: 348, h: 272) -->
+  <g transform="translate(423, 120)" filter="url(#shadow)">
+    <rect width="348" height="272" rx="14" fill="url(#card-grad)" stroke="#1e4636" stroke-width="1.5"/>
+    <rect x="0" y="0" width="348" height="46" rx="14" fill="#123628"/>
+    <rect x="0" y="30" width="348" height="16" fill="#123628"/>
+    <text x="20" y="30" fill="#34d399" font-size="16" font-weight="700">4. SOLUCIÓN</text>
+
+    <g transform="translate(20, 68)">
+      <text x="0" y="18" fill="#cbd5e1" font-size="13.5">• Tokenización de créditos como</text>
+      <text x="12" y="38" fill="#f1f5f9" font-size="13.5" font-weight="600">activos únicos on-chain.</text>
+
+      <text x="0" y="70" fill="#cbd5e1" font-size="13.5">• Contratos inteligentes Soroban con</text>
+      <text x="12" y="90" fill="#f1f5f9" font-size="13.5" font-weight="600">reglas estrictas anti-duplicación.</text>
+
+      <text x="0" y="122" fill="#cbd5e1" font-size="13.5">• Retiros irreversibles definitivos.</text>
+
+      <text x="0" y="154" fill="#cbd5e1" font-size="13.5">• Verificación de huella de certificados.</text>
+    </g>
+  </g>
+
+  <!-- 8. MÉTRICAS CLAVE (x: 423, y: 407, w: 348, h: 273) -->
+  <g transform="translate(423, 407)" filter="url(#shadow)">
+    <rect width="348" height="273" rx="14" fill="url(#card-grad)" stroke="#1e4636" stroke-width="1.5"/>
+    <rect x="0" y="0" width="348" height="46" rx="14" fill="#123628"/>
+    <rect x="0" y="30" width="348" height="16" fill="#123628"/>
+    <text x="20" y="30" fill="#34d399" font-size="16" font-weight="700">8. MÉTRICAS CLAVE</text>
+
+    <g transform="translate(20, 70)">
+      <circle cx="5" cy="8" r="3.5" fill="#10b981"/>
+      <text x="18" y="12" fill="#f1f5f9" font-size="13.5" font-weight="600">Toneladas de CO₂ tokenizadas.</text>
+
+      <circle cx="5" cy="48" r="3.5" fill="#10b981"/>
+      <text x="18" y="52" fill="#f1f5f9" font-size="13.5" font-weight="600">Créditos retirados exitosamente.</text>
+
+      <circle cx="5" cy="88" r="3.5" fill="#10b981"/>
+      <text x="18" y="92" fill="#f1f5f9" font-size="13.5" font-weight="600">Transacciones auditadas</text>
+      <text x="18" y="110" fill="#cbd5e1" font-size="13">en el explorador.</text>
+
+      <circle cx="5" cy="142" r="3.5" fill="#10b981"/>
+      <text x="18" y="146" fill="#f1f5f9" font-size="13.5" font-weight="600">Intentos de doble emisión</text>
+      <text x="18" y="164" fill="#cbd5e1" font-size="13">prevenidos por el contrato.</text>
+    </g>
+  </g>
+
+  <!-- 3. PROPUESTA DE VALOR ÚNICA (x: 786, y: 120, w: 348, h: 560) -->
+  <g transform="translate(786, 120)" filter="url(#shadow)">
+    <rect width="348" height="560" rx="14" fill="url(#card-highlight)" stroke="#10b981" stroke-width="2"/>
+    <rect x="0" y="0" width="348" height="46" rx="14" fill="#10b981"/>
+    <rect x="0" y="30" width="348" height="16" fill="#10b981"/>
+    <text x="20" y="30" fill="#04120c" font-size="16" font-weight="800">3. PROPUESTA DE VALOR ÚNICA</text>
+
+    <g transform="translate(24, 85)">
+      <rect width="300" height="420" rx="12" fill="#061810" stroke="#1e543e" stroke-width="1.5"/>
+      <text x="20" y="40" fill="#34d399" font-size="14" font-weight="700">VALOR DIFERENCIAL</text>
+
+      <text x="20" y="80" fill="#ffffff" font-size="16" font-weight="700">Trazabilidad inmutable,</text>
+      <text x="20" y="106" fill="#ffffff" font-size="16" font-weight="700">no repudiable y</text>
+      <text x="20" y="132" fill="#ffffff" font-size="16" font-weight="700">verificable públicamente</text>
+      <text x="20" y="158" fill="#ffffff" font-size="16" font-weight="700">por diseño sobre Stellar,</text>
+
+      <text x="20" y="205" fill="#cbd5e1" font-size="14">eliminando intermediarios</text>
+      <text x="20" y="230" fill="#cbd5e1" font-size="14">y garantizando la unicidad</text>
+      <text x="20" y="255" fill="#cbd5e1" font-size="14">de cada tonelada de CO₂.</text>
+
+      <line x1="20" y1="285" x2="280" y2="285" stroke="#1e543e" stroke-width="1"/>
+      <text x="20" y="320" fill="#34d399" font-size="13" font-weight="600">Infraestructura Abierta</text>
+      <text x="20" y="345" fill="#94a3b8" font-size="12">Certeza matemática sin</text>
+      <text x="20" y="365" fill="#94a3b8" font-size="12">depender de intermediarios.</text>
+    </g>
+  </g>
+
+  <!-- 9. VENTAJA ESPECIAL (x: 1149, y: 120, w: 348, h: 272) -->
+  <g transform="translate(1149, 120)" filter="url(#shadow)">
+    <rect width="348" height="272" rx="14" fill="url(#card-grad)" stroke="#1e4636" stroke-width="1.5"/>
+    <rect x="0" y="0" width="348" height="46" rx="14" fill="#123628"/>
+    <rect x="0" y="30" width="348" height="16" fill="#123628"/>
+    <text x="20" y="30" fill="#34d399" font-size="16" font-weight="700">9. VENTAJA ESPECIAL</text>
+
+    <g transform="translate(20, 75)">
+      <text x="0" y="18" fill="#ffffff" font-size="14" font-weight="600">Seguridad descentralizada y</text>
+      <text x="0" y="40" fill="#ffffff" font-size="14" font-weight="600">auditoría pública abierta</text>
+      <text x="0" y="62" fill="#ffffff" font-size="14" font-weight="600">en tiempo real</text>
+
+      <text x="0" y="105" fill="#34d399" font-size="13" font-weight="600">vs.</text>
+      
+      <text x="0" y="132" fill="#cbd5e1" font-size="13.5">Bases de datos privadas dependientes</text>
+      <text x="0" y="152" fill="#cbd5e1" font-size="13.5">de reportes manuales periódicos.</text>
+    </g>
+  </g>
+
+  <!-- 5. CANALES (x: 1149, y: 407, w: 348, h: 273) -->
+  <g transform="translate(1149, 407)" filter="url(#shadow)">
+    <rect width="348" height="273" rx="14" fill="url(#card-grad)" stroke="#1e4636" stroke-width="1.5"/>
+    <rect x="0" y="0" width="348" height="46" rx="14" fill="#123628"/>
+    <rect x="0" y="30" width="348" height="16" fill="#123628"/>
+    <text x="20" y="30" fill="#34d399" font-size="16" font-weight="700">5. CANALES</text>
+
+    <g transform="translate(20, 70)">
+      <circle cx="5" cy="8" r="3.5" fill="#10b981"/>
+      <text x="18" y="12" fill="#f1f5f9" font-size="13.5" font-weight="600">Alianzas institucionales:</text>
+      <text x="18" y="32" fill="#cbd5e1" font-size="13">Programa RIA, Antioquia Reverdece</text>
+      <text x="18" y="50" fill="#cbd5e1" font-size="13">y Corporaciones Autónomas Regionales.</text>
+
+      <circle cx="5" cy="80" r="3.5" fill="#10b981"/>
+      <text x="18" y="84" fill="#f1f5f9" font-size="13.5" font-weight="600">Ecosistema de innovación:</text>
+      <text x="18" y="104" fill="#cbd5e1" font-size="13">Ruta N.</text>
+
+      <circle cx="5" cy="138" r="3.5" fill="#10b981"/>
+      <text x="18" y="142" fill="#f1f5f9" font-size="13.5" font-weight="600">Eventos Web3:</text>
+      <text x="18" y="162" fill="#cbd5e1" font-size="13">Stellar Apex.</text>
+    </g>
+  </g>
+
+  <!-- 2. SEGMENTO DE CLIENTES (x: 1512, y: 120, w: 348, h: 560) -->
+  <g transform="translate(1512, 120)" filter="url(#shadow)">
+    <rect width="348" height="560" rx="14" fill="url(#card-grad)" stroke="#1e4636" stroke-width="1.5"/>
+    <rect x="0" y="0" width="348" height="46" rx="14" fill="#123628"/>
+    <rect x="0" y="30" width="348" height="16" fill="#123628"/>
+    <text x="20" y="30" fill="#34d399" font-size="16" font-weight="700">2. SEGMENTO DE CLIENTES</text>
+
+    <g transform="translate(20, 75)">
+      <rect width="308" height="190" rx="10" fill="#091811" stroke="#16382b" stroke-width="1"/>
+      <text x="16" y="26" fill="#34d399" font-size="13" font-weight="700">SEGMENTO PRINCIPAL</text>
+      <text x="16" y="52" fill="#f1f5f9" font-size="14" font-weight="600">Pequeños proyectos forestales</text>
+      <text x="16" y="72" fill="#f1f5f9" font-size="14" font-weight="600">y comunidades reforestadoras</text>
+      <text x="16" y="100" fill="#cbd5e1" font-size="13">• Vinculados a programas como</text>
+      <text x="26" y="122" fill="#cbd5e1" font-size="13">RIA / Antioquia Reverdece.</text>
+      <text x="16" y="148" fill="#94a3b8" font-size="12">Asociaciones campesinas e indígenas.</text>
+
+      <g transform="translate(0, 210)">
+        <rect width="308" height="210" rx="10" fill="#091811" stroke="#16382b" stroke-width="1"/>
+        <text x="16" y="26" fill="#34d399" font-size="13" font-weight="700">SEGMENTOS SECUNDARIOS</text>
+        <text x="16" y="52" fill="#f1f5f9" font-size="13.5" font-weight="600">• Compradores corporativos</text>
+        <text x="26" y="72" fill="#cbd5e1" font-size="13">que compensan huella de carbono</text>
+        <text x="26" y="92" fill="#cbd5e1" font-size="13">bajo el Decreto 973 de 2026.</text>
+
+        <text x="16" y="124" fill="#f1f5f9" font-size="13.5" font-weight="600">• Entidades de control</text>
+        <text x="26" y="144" fill="#cbd5e1" font-size="13">y auditoría ambiental.</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= BOTTOM ROW ================= -->
+  <!-- 7. ESTRUCTURA DE COSTOS (x: 60, y: 700, w: 890, h: 330) -->
+  <g transform="translate(60, 700)" filter="url(#shadow)">
+    <rect width="890" height="330" rx="14" fill="url(#card-grad)" stroke="#1e4636" stroke-width="1.5"/>
+    <rect x="0" y="0" width="890" height="46" rx="14" fill="#123628"/>
+    <rect x="0" y="30" width="890" height="16" fill="#123628"/>
+    <text x="20" y="30" fill="#34d399" font-size="16" font-weight="700">7. ESTRUCTURA DE COSTOS</text>
+
+    <g transform="translate(30, 80)">
+      <g transform="translate(0, 0)">
+        <text x="0" y="20" fill="#34d399" font-size="15" font-weight="700">Costos de desarrollo e infraestructura:</text>
+        <text x="0" y="52" fill="#f1f5f9" font-size="14">• Mantenimiento de interfaz web.</text>
+        <text x="0" y="80" fill="#f1f5f9" font-size="14">• Nodos RPC de consulta.</text>
+        <text x="0" y="108" fill="#f1f5f9" font-size="14">• Auditorías de contratos inteligentes.</text>
+      </g>
+      
+      <g transform="translate(440, 0)">
+        <text x="0" y="20" fill="#34d399" font-size="15" font-weight="700">Costos de red:</text>
+        <text x="0" y="52" fill="#f1f5f9" font-size="14">• State rent.</text>
+        <text x="0" y="80" fill="#f1f5f9" font-size="14">• Comisiones de transacción (mínimas en Stellar).</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- 6. FUENTES DE INGRESOS (x: 970, y: 700, w: 890, h: 330) -->
+  <g transform="translate(970, 700)" filter="url(#shadow)">
+    <rect width="890" height="330" rx="14" fill="url(#card-grad)" stroke="#1e4636" stroke-width="1.5"/>
+    <rect x="0" y="0" width="890" height="46" rx="14" fill="#123628"/>
+    <rect x="0" y="30" width="890" height="16" fill="#123628"/>
+    <text x="20" y="30" fill="#34d399" font-size="16" font-weight="700">6. FLUJO DE INGRESOS</text>
+
+    <g transform="translate(30, 80)">
+      <text x="0" y="20" fill="#34d399" font-size="15" font-weight="700">Líneas de monetización:</text>
+      
+      <text x="0" y="55" fill="#f1f5f9" font-size="14">• Modelo SaaS y micro-tarifas por originación / emisión</text>
+      <text x="14" y="80" fill="#cbd5e1" font-size="13.5">para grandes emisores.</text>
+
+      <text x="0" y="118" fill="#f1f5f9" font-size="14">• Servicios corporativos de reportes automatizados</text>
+      <text x="14" y="143" fill="#cbd5e1" font-size="13.5">de cumplimiento regulatorio y verificación de cartera.</text>
+    </g>
+  </g>
+</svg>

@@ -1,69 +1,171 @@
-# Verde Verificado — Product Blueprint
-Link Repositorio: https://github.com/emprendamosahora2030-sudo/verde-verificado
+# Product Blueprint
+
+**Nombre del proyecto:** Verde Verificado
+
+**Repositorio :** [verde-verificado](https://github.com/emprendamosahora2030-sudo/verde-verificado)
+
+---
+
+## Contenido
+
+1. Priorización de historias
+2. Propuesta de valor
+3. Flujo de usuario
+4. Alcance del MVP
+5. Lean Canvas
+6. Backlog priorizado (Kanban)
+7. Arquitectura inicial
+8. Uso de Stellar y justificación
+
+---
+
 ## 1. Priorización de historias
 
-Criterio de priorización: impacto regulatorio (Decreto 973/2026) + valor de confianza para el usuario final. La prevención de doble-conteo encabeza el backlog porque es el problema oficial del equipo (Problem Brief) y el fundamento técnico del que dependen certificación, auditoría y adopción institucional.
+**Criterio de priorización:** (1) resuelve el problema central de doble conteo y doble venta identificado en el Problem Brief; (2) proporciona certeza técnica y confianza verificable e independiente a quienes no controlan el registro; (3) es técnicamente construible y validable en el MVP con el contrato Soroban ya implementado y testeado. Lo que no cumple de forma estricta estos criterios pasa al backlog general como deseable.
 
-1. Prevención de doble-conteo de un mismo crédito (núcleo del Problem Brief)
-2. Verificación en tiempo real del estado de un crédito antes de comprarlo
-3. Consulta del historial inmutable por auditores/reguladores (Decreto 973/2026)
-4. Registro de créditos verificados por proyectos forestales (RIA/Antioquia Reverdece)
-5. Certificado digital verificable para el comprador
-6. Dashboard del ciclo de vida del crédito (para evaluadores/jurado)
-7. Reportes exportables del historial de transacciones para cumplimiento normativo
+| Prioridad | Historia | Propuesta por | Por qué entra al backlog |
+| :---: | --- | :---: | --- |
+| 1 | Como gestor de Verde Verificado, quiero que el sistema impida automáticamente el doble conteo de un mismo crédito, para proteger la credibilidad del mercado de carbono. | José Luis | Es el núcleo del Problem Brief; sin esta garantía técnica matemática nada más tiene valor. |
+| 2 | Como auditor de la autoridad ambiental, quiero ver en una línea de tiempo el historial completo de un crédito (emisión, transferencias y retiro), para comprobar que nunca se vendió ni se usó dos veces. | Daniel | Hace visible y auditable la trazabilidad a terceros de forma independiente, resolviendo fallas como las del caso Pachamama Cumbal. |
+| 3 | Como comprador corporativo que compensa emisiones, quiero verificar en tiempo real el estado de un crédito antes de comprarlo, sin necesidad de instalar billetera, para asegurarme de que no ha sido vendido ni retirado. | José Luis / Daniel | Es el punto de interacción donde se previene el fraude y la doble venta en la práctica comercial. |
+| 4 | Como gestor de un proyecto forestal comunitario, quiero que un verificador autorizado registre mis créditos verificados, para emitir activos trazables sin intermediarios centralizados. | José Luis | Conecta directamente con el usuario principal del Problem Brief (pequeño generador forestal). |
+| 5 | Como verificador ambiental acreditado, quiero emitir un crédito registrando su identificador único y el hash SHA-256 del certificado técnico en el contrato, para garantizar que cada tonelada certificada tenga respaldo inalterable. | Emir | La emisión con huella digital criptográfica es la puerta de entrada; vincula el soporte legal con el activo on-chain. |
+| 6 | Como administrador de Verde Verificado, quiero autorizar y revocar verificadores mediante firma administrativa en el contrato, para que únicamente auditores acreditados puedan originar créditos. | Emir | Establece el control de acceso y gobernanza del protocolo, evitando que actores no calificados emitan créditos. |
+| 7 | Como auditor de la empresa compradora, quiero cargar el PDF del certificado en la plataforma y validar su huella digital registrada, para detectar certificados adulterados o falsos antes de usarlos. | Daniel / José Luis | Une la evidencia documental off-chain con la verificación descentralizada on-chain. |
+| 8 | Como responsable de QA y operaciones, quiero recibir mensajes descriptivos de error y confirmación ante transacciones rechazadas (por ID duplicado o falta de autorización), para diagnosticar fallas de inmediato y garantizar la confiabilidad operativa en campo. | Lina | Asegura la robustez en la experiencia de usuario y el manejo de contingencias operativas ante fallos de validación o red. |
 
-Remplazar por la tabla del Anexo b
+---
 
 ## 2. Propuesta de valor
 
-Verde Verificado resuelve la falta de trazabilidad confiable en el mercado de créditos de carbono en Colombia, que hoy permite el doble-conteo o la doble-venta de un mismo crédito. La verificación actual depende de reportes manuales y registros centralizados, vulnerables a error humano y manipulación. Verde Verificado tokeniza cada crédito como un activo único en la red Stellar mediante un contrato inteligente Soroban que impide técnicamente su duplicación: desde la emisión hasta el retiro, el historial queda registrado de forma inmutable y verificable públicamente por cualquier parte.
+**Usuario (del Problem Brief):** El pequeño proyecto de conservación o reforestación —una asociación campesina, una comunidad indígena o un pequeño propietario forestal (ej. vinculado a programas como RIA / Antioquia Reverdece)— que genera créditos de carbono certificados y busca comercializarlos a un precio justo sin depender de intermediarios que concentren la información.
 
-A diferencia de los registros tradicionales, Verde Verificado ofrece verificación pública en tiempo real: cualquier comprador, auditor o regulador puede confirmar el estado exacto de un crédito sin depender de la palabra del emisor. Esto conecta directamente con el usuario del Problem Brief: compradores corporativos que necesitan evidencia auditable de su compensación ambiental, proyectos forestales que necesitan demostrar su impacto real, y reguladores que deben hacer cumplir el Decreto 973 de 2026 sin capacidad de fiscalización manual a gran escala.
+**Resultado que obtiene:** Cada crédito verificado queda registrado como un activo digital no fungible y único en la red Stellar, con su ciclo de vida completo (emisión, transferencias, retiro) auditable públicamente. El proyecto puede entregar a cualquier comprador corporativo o auditor un código o enlace para que comprueben de forma directa y en segundos que el crédito es auténtico, vigente y no ha sido transado previamente.
+
+**Por qué elegiría esta solución:** Porque elimina la asimetría de información y la dependencia de intermediarios centralizados que concentran los registros y capturan gran parte del margen económico. Al basar la confianza en un registro descentralizado e inalterable, el pequeño productor negocia en igualdad de condiciones, mientras que el comprador reduce a cero su riesgo de fraude o sanción regulatoria (Decreto 973 de 2026), justificando un pago premium por tonelada certificada.
+
+**En qué se diferencia de cómo lo resuelve hoy:** Hoy los créditos coexisten en registros fragmentados y opacos (estándares privados, plataformas de brokers y RENARE) que no sincronizan en tiempo real. En el caso judicializado *Pachamama Cumbal*, un proyecto suspendido por un juez siguió transando cerca de 400.000 créditos porque el registro centralizado no reflejó la medida. En Verde Verificado, el estado, la gobernanza y la trazabilidad son ejecutados por contratos inteligentes públicos sobre Stellar, auditables sin intermediarios ni permisos especiales.
+
+---
 
 ## 3. Flujo de usuario
 
-1. **Proyecto forestal** (ej. vinculado a RIA/Antioquia Reverdece) solicita verificación de hectáreas reforestadas/toneladas de CO₂ capturadas.
-2. **Verificador** valida los datos de campo y autoriza la emisión.
-3. **Emisión**: se crea el token único en Stellar/Soroban representando el crédito verificado.
-4. **Comprador corporativo** consulta el estado del crédito antes de comprarlo, confirmando que no ha sido vendido antes.
-5. **Transferencia**: el crédito pasa del proyecto al comprador; la transacción queda registrada de forma inmutable.
-6. **Certificación**: el comprador recibe un certificado digital verificable con enlace a la transacción on-chain.
-7. **Retiro/cierre**: al usarse como compensación, el crédito se marca como retirado, bloqueando cualquier reventa futura.
+El recorrido de Verde Verificado abarca desde la originación en el proyecto forestal hasta el retiro definitivo e irreversible de la compensación de carbono. Participan cuatro roles principales: el proyecto forestal generador, el verificador técnico acreditado, el comprador corporativo y los auditores o veedores ciudadanos.
 
-PENDIENTE: AUMENTAR EL CONTENIDO A 150 TABLA ANEXO B
+| Paso | Rol | Qué hace | Punto de interacción |
+| :---: | :---: | --- | --- |
+| 1 | Proyecto forestal | Solicita la certificación de sus hectáreas reforestadas y aporta las evidencias y mediciones técnicas de campo. | Proceso de auditoría presencial y técnica en campo |
+| 2 | Verificador acreditado | Revisa los datos de campo, emite el dictamen técnico y la plataforma asocia automáticamente una huella digital única al documento. | Portal Verde Verificado *(Módulo de Verificación)* |
+| 3 | Verificador acreditado | Origina y emite formalmente los créditos certificados a nombre del proyecto forestal mediante autorización digital segura. | Portal Verde Verificado *(Panel de Emisión)* |
+| 4 | Comprador corporativo | Consulta el código del crédito para verificar en tiempo real su autenticidad, vigencia, toneladas y origen antes de negociar. | Buscador público abierto *(Sin registro ni costo)* |
+| 5 | Proyecto forestal | Transfiere la titularidad del crédito al comprador mediante firma electrónica; el sistema registra el traspaso en su historial público. | Portal Verde Verificado *(Panel de Gestión de Activos)* |
+| 6 | Comprador corporativo | Redime el crédito a nombre de su empresa para compensar emisiones, cancelándolo de forma definitiva e irreversible para evitar doble uso. | Portal Verde Verificado *(Módulo de Compensación)* |
+| 7 | Comprador corporativo | Descarga el certificado oficial de compensación con respaldo inalterable y código de validación pública para sus reportes de sostenibilidad. | Portal Verde Verificado *(Descarga de Certificados)* |
+| 8 | Auditor / Ciudadano | Comprueba la cadena de custodia completa del crédito y valida que el certificado en PDF no haya sido alterado. | Portal de Transparencia y Auditoría Pública |
+
+**Acceso universal y seguridad por diseño:** Las consultas de información (pasos 4 y 8) son completamente abiertas y públicas: cualquier ciudadano, auditor o ente de control puede verificar la autenticidad y el historial de un crédito en segundos, sin intermediarios, sin crear cuentas y sin barreras de entrada. Por su parte, las operaciones de emisión, transferencia y redención (pasos 3, 5 y 6) cuentan con altos estándares de seguridad y firma digital, garantizando que únicamente los auditores acreditados originen créditos y que solo los dueños legítimos puedan transferir o compensar sus activos.
+
+---
 
 ## 4. Alcance del MVP
 
-**Dentro del MVP:** contrato inteligente con ciclo completo (emisión → transferencia → verificación → retiro) y protección anti-doble-conteo a nivel de protocolo; certificado de tokenización verificable por crédito; consulta pública del historial on-chain.
+| Dentro del MVP (Funcionalidad central) | Fuera del MVP (Deseable / Fases posteriores) |
+| --- | --- |
+| Contrato inteligente Soroban con ciclo de vida completo: emisión individual y por lote atómico, transferencia de propiedad y retiro irreversible. | Interfaz web avanzada con perfiles multi-rol complejos y tableros estadísticos dinámicos. |
+| Prevención estricta de doble conteo a nivel de protocolo (identificadores únicos, estado de retiro inmutable, lotes atómicos todo-o-nada). | Integración automatizada y sincronización bidireccional vía API con RENARE y plataformas de estándares internacionales (Verra, Gold Standard). |
+| Historial cronológico inmutable y paginado (`historial_credito`) por crédito. | Monitoreo satelital y telemetría IoT automatizada en predios forestales. |
+| Verificación criptográfica del PDF del certificado mediante cálculo de huella SHA-256 en cliente. | Dashboard analítico agregado del mercado de carbono y reportes avanzados en PDF/CSV. |
+| Consulta pública universal de estado e historial on-chain sin necesidad de autenticación ni billetera. | Módulo de suspensión preventiva de créditos por gobernanza judicial *(previsto para extensión de contrato)*. |
+| Despliegue, configuración y ciclo de pruebas exhaustivo ejecutado en Stellar Testnet. | Sistema de reputación on-chain para múltiples entidades certificadoras y despliegue en Mainnet. |
 
-** Fuera del MVP (deseable, no crítico):** interfaz web completa para usuarios no técnicos; integración automatizada con fuentes de datos satelitales de verificación forestal; dashboard analítico con métricas agregadas del mercado; onboarding de múltiples verificadores simultáneos.
+**Por qué el recorte sigue entregando valor:** El valor nuclear y diferencial de Verde Verificado radica en la certeza matemática de que un crédito de carbono no puede duplicarse, revenderse ni modificarse arbitrariamente; dicha garantía reside en la lógica inmutable del contrato Soroban, no en la sofisticación de la interfaz. Un MVP funcional desplegado y probado en Stellar Testnet con una interfaz pública de consulta valida de inmediato la tesis del Problem Brief y satisface los requerimientos del Decreto 973 de 2026. Se reconoce conscientemente el riesgo operativo de operar en paralelo a registros tradicionales: en esta fase MVP, el verificador tiene el deber procedimental de constatar el retiro del crédito en su registro de origen antes de emitir el token en Verde Verificado, asegurando que la solución no actúe como un registro duplicado.
 
-**Justificación:** el valor diferencial de Verde Verificado está en la garantía criptográfica de no-duplicación, no en la interfaz. Un MVP con el contrato probado on-chain ya demuestra el argumento regulatorio central ante jurado y aliados institucionales; la interfaz y las integraciones avanzadas se construyen después sin alterar la lógica de confianza ya validada.
+---
 
 ## 5. Lean Canvas
 
-| Bloque | Contenido |
-|---|---|
-| **Problema** | Doble-conteo/doble-venta de créditos de carbono; falta de trazabilidad verificable exigida por el Decreto 973/2026 |
-| **Segmento de clientes** | Compradores corporativos que compensan emisiones; proyectos forestales/RIA generadores de créditos; reguladores y auditores (MinAmbiente) |
-| **Propuesta de valor única** | Trazabilidad inmutable y verificable públicamente por diseño, no por confianza en el emisor |
-| **Solución** | Tokenización de créditos como activo único en Stellar/Soroban con contrato anti-doble-conteo |
-| **Canales** | Alianzas institucionales (RIA, Antioquia Reverdece), Ruta N, Stellar Apex (PENDIENTE) EJ: Medios para promocionar la plataforma, alianzas con empresas para usarlo como compensación |
-| **Métricas clave** | Créditos emitidos, transferencias verificadas, intentos de doble-conteo bloqueados, proyectos forestales vinculados |
-| **Ventaja especial** | Trazabilidad verificable por diseño vs. registros centralizados auditables solo bajo solicitud |
-| **Estructura de costos** | **Costos Fijos:** Infraestructura web y servicios en la nube, mantenimiento y desarrollo continuo de la plataforma y contratos inteligentes, soporte y auditorías de seguridad. <br>**Costos Variables:** Consumo de recursos en la red Stellar (comisiones de transacción, almacenamiento/state rent en Soroban) y validación de campo. |
-| **Flujo de ingresos** | **Modelo SaaS (Software as a Service):** Suscripciones recurrentes (mensuales/anuales) que aseguran un flujo de ingresos predecible para el retorno de inversión (ROI) y el mantenimiento técnico/operativo a largo plazo: <br>• *Suscripción B2B Corporativa:* Acceso a dashboards de trazabilidad, reportes automatizados para cumplimiento del Decreto 973/2026 y descarga de certificados auditables. <br>• *Planes para Desarrolladores/Proyectos:* Herramientas de registro, tokenización y gestión de cartera de créditos ecológicos. <br>• *Servicios :* Tarifas por volumen de tokenización/emisión y acceso a API de integración empresarial. |
+**Enlace al Lean Canvas:** [Lean Canvas de Verde Verificado](img/lean-canvas.png)
 
-*(Pendiente: convertir esta tabla en imagen de una página — ej. con Canva — para el formato final.)*
+| Bloque | Detalle estratégico |
+|---|---|
+| **Problema** | Doble conteo y doble venta de créditos de carbono; falta de trazabilidad pública verificable en tiempo real; vulnerabilidad ante fraudes por registros centralizados y asimetría de información en comunidades forestales. |
+| **Segmento de clientes** | **Principal:** Pequeños proyectos forestales y comunidades reforestadoras (RIA / Antioquia Reverdece).<br>**Secundarios:** Compradores corporativos que compensan huella de carbono bajo el Decreto 973 de 2026, y entidades de control/auditoría ambiental. |
+| **Propuesta de valor única** | Trazabilidad inmutable, no repudiable y verificable públicamente por diseño sobre Stellar, eliminando intermediarios y garantizando la unicidad de cada tonelada de CO₂. |
+| **Solución** | Tokenización de créditos como activos únicos mediante contratos inteligentes Soroban con reglas estrictas anti-duplicación, retiros irreversibles y verificación de huella de certificados. |
+| **Canales** | Alianzas institucionales (Programa RIA, Antioquia Reverdece, Corporaciones Autónomas Regionales), ecosistema de innovación (Ruta N), y eventos Web3 (Stellar Apex). |
+| **Métricas clave** | Toneladas de CO₂ tokenizadas, créditos retirados exitosamente, transacciones auditadas en el explorador, intentos de doble emisión prevenidos por el contrato. |
+| **Ventaja especial** | Seguridad descentralizada y auditoría pública abierta en tiempo real vs. bases de datos privadas dependientes de reportes manuales periódicos. |
+| **Estructura de costos** | **Costos de desarrollo e infraestructura:** Mantenimiento de interfaz web, nodos RPC de consulta y auditorías de contratos inteligentes.<br>**Costos de red:** State rent y comisiones de transacción (mínimas en Stellar). |
+| **Flujo de ingresos** | Modelo SaaS y micro-tarifas por originación/emisión para grandes emisores; servicios corporativos de reportes automatizados de cumplimiento regulatorio y verificación de cartera. |
+
+---
 
 ## 6. Backlog priorizado (Kanban)
 
-Tablero: [Verde Verificado — Backlog](https://github.com/users/emprendamosahora2030-sudo/projects/2) — 7 tareas priorizadas cubriendo los roles del equipo (contrato Soroban, interfaz, pruebas de aceptación, certificado digital, dashboard para el jurado, arquitectura y alianzas institucionales).
+Tablero público de seguimiento: [Verde Verificado — GitHub Projects](https://github.com/users/emprendamosahora2030-sudo/projects/2)
+
+El desarrollo se gestiona mediante un flujo Kanban dividido en columnas: *Backlog (fuera del MVP)*, *Por hacer (MVP)*, *En progreso*, *En revisión (QA)* y *Hecho*. Cada tarjeta del tablero está construida a partir de las historias de usuario priorizadas del equipo e incorpora criterios de aceptación verificables bajo el estándar "Dado / Cuando / Entonces", garantizando que cada incremento funcional cumpla tanto las especificaciones técnicas del contrato Soroban como las validaciones de interfaz y seguridad.
+
+---
 
 ## 7. Arquitectura inicial
 
-La arquitectura tiene tres capas. **Interfaz**: punto de interacción con proyectos forestales, compradores y verificadores (desarrollo frontend a cargo de Daniel). **Lógica de negocio**: el contrato inteligente Soroban (a cargo de Emir), que define las reglas del ciclo de vida del crédito y aplica la protección anti-doble-conteo directamente a nivel de contrato. **Red Stellar**: la capa donde el contrato se despliega y ejecuta; cada transacción queda registrada de forma inmutable en el ledger, consultable públicamente. La red entra en el punto crítico del flujo: cada cambio de estado del crédito se escribe on-chain, de modo que el historial completo es auditable por cualquier tercero sin depender del equipo como intermediario de confianza.
+**Diagrama de arquitectura:**
+
+**Enlace al diagrama de arquitectura:** [Diagrama de Arquitectura de Verde Verificado](img/arquitectura.png)
+
+```mermaid
+flowchart LR
+    subgraph U["Usuarios"]
+        P["Proyecto forestal"]
+        V["Verificador"]
+        C["Comprador corporativo"]
+        A["Auditor / Ciudadano"]
+    end
+
+    UI["Interfaz Web Verde Verificado<br/>(Consulta pública, Emisión, Transferencia, Retiro)"]
+    W["Billetera Freighter<br/>(Firma criptográfica de transacciones)"]
+    RPC["Stellar RPC Node<br/>(Entrada a la red descentralizada)"]
+    SC["Contrato Inteligente Soroban<br/>(Reglas de negocio y anti-doble conteo)"]
+    L[("Ledger de Stellar<br/>(Almacenamiento inmutable en Testnet)")]
+    EX["Stellar Expert<br/>(Explorador público independiente)"]
+
+    P --> UI
+    V --> UI
+    C --> UI
+    A --> UI
+    UI -- "Lecturas y consultas sin firma" --> RPC
+    UI -- "Solicitud de firma" --> W
+    W -- "Transacciones autorizadas" --> RPC
+    RPC --> SC
+    SC -- "Registra créditos, retiros e historial" --> L
+    L --> EX
+    A -. "Auditoría independiente" .-> EX
+```
+
+| Capa | Componente | Qué hace |
+| :---: | --- | --- |
+| **Interfaz de Usuario** | Aplicación Web + Billetera Freighter | Permite la interacción visual para consultas públicas y gestiona la firma segura de transacciones sin exponer llaves privadas. |
+| **Lógica de Negocio** | Contrato Soroban `verde-verificado` | Aplica de forma autónoma las reglas del ciclo de vida: control de verificadores autorizados, unicidad de IDs, retiros irreversibles y trazabilidad inmutable. |
+| **Red Descentralizada** | Stellar RPC + Ledger Stellar + Stellar Expert | Recibe transacciones firmadas, ejecuta el cómputo on-chain, persiste el estado con retención de TTL y expone la auditoría en exploradores abiertos. |
+
+**En qué punto entra la red:** La red Stellar entra en acción de manera decisiva en cada transición de estado del activo. Cuando un verificador emite un crédito o cuando un propietario transfiere o redime un crédito, la interfaz estructura la transacción, Freighter solicita la autorización criptográfica local al usuario y el nodo Stellar RPC remite la instrucción al contrato Soroban para su validación y persistencia en el ledger. Las consultas de lectura no generan costos ni requieren firmas, accediendo directamente a los datos indexados. De este modo, la red blockchain actúa como la única fuente de verdad incontestable, desacoplando la confianza de la interfaz gráfica y permitiendo que cualquier tercero pueda auditar los registros incluso si la plataforma web estuviese inaccesible.
+
+---
 
 ## 8. Uso de Stellar y justificación
 
-Verde Verificado usa **Soroban** para codificar las reglas del ciclo de vida del crédito, incluida la protección anti-doble-conteo a nivel de protocolo, eliminando la posibilidad de alteración unilateral por el operador. Usa el **ledger de Stellar** como registro inmutable y de consulta pública. Se apoya en los exploradores públicos de Stellar (Stellar Expert / Stellar Lab) para que compradores, auditores y reguladores verifiquen el estado de un crédito de forma independiente. Esta elección responde directamente al criterio de pertinencia del Problem Brief: el problema identificado exige una solución donde la confianza no dependa de una entidad central, y Stellar/Soroban ofrece costos de transacción bajos, velocidad adecuada y un ecosistema de verificación pública ya maduro — condiciones necesarias para que el argumento regulatorio ante el Decreto 973/2026 sea creíble ante jurado y aliados institucionales.
+**Criterio de pertinencia (del Problem Brief):** Ninguna de las partes involucradas (proyectos comunitarios, intermediarios comerciales, compradores corporativos, entidades certificadoras y autoridades ambientales) acepta que una contraparte particular concentre o modifique el registro del que depende la validez legal del crédito de carbono. Una base de datos centralizada convertiría al administrador de la infraestructura en un intermediario de confianza sujeto a fallas o presiones.
+
+| Componente de Stellar | Para qué lo usamos en Verde Verificado | Por qué este componente y no otra alternativa |
+| --- | --- | --- |
+| **Contratos Soroban (Rust / WASM)** | Ejecución determinista del ciclo de vida del crédito (emisión autorizada, transferencia, retiro irreversible y lotes atómicos). | Las reglas se ejecutan de forma inmutable e idéntica para todos los actores; un backend tradicional exigiría confiar ciegamente en quien administra el servidor. |
+| **Ledger de Stellar** | Registro permanente y descentralizado de los créditos, saldos y cadena cronológica de movimientos. | Garantiza inmutabilidad matemática y persistencia con TTL gestionado, eliminando riesgos de alteración retroactiva. |
+| **Cuentas y Claves Criptográficas (`G...`)** | Identificación no ambigua de administradores, auditores verificadores y propietarios de créditos. | La autenticación y autorización se fundan en criptografía de clave pública (`require_auth`), sin contraseñas vulnerables en bases de datos. |
+| **Billetera Freighter** | Firma de transacciones directamente en el navegador del usuario. | Las llaves privadas permanecen bajo custodia exclusiva del usuario, cumpliendo los estándares de seguridad Web3. |
+| **Stellar RPC** | Enlace de comunicación entre la aplicación web y los contratos Soroban. | Proporciona una interfaz estandarizada y de baja latencia para simular transacciones y enviar operaciones al ledger. |
+| **Eventos del Contrato** | Emisión de señales on-chain ante emisiones, transferencias y retiros. | Facilita la indexación y seguimiento en tiempo real por parte de exploradores y aplicaciones sin saturar lecturas puntuales. |
+| **Stellar Testnet + CLI** | Entorno de despliegue, simulación y validación continua del protocolo. | Permite verificar exhaustivamente el comportamiento del sistema con costos reales de cero antes de la puesta en producción. |
+| **Stellar Expert** | Explorador público y neutral de bloques y transacciones. | Permite que auditores y ciudadanos corroboren la validez de los movimientos sin depender de nuestra propia interfaz. |
+
+Elegimos la infraestructura de Stellar porque combina costos de transacción ínfimos (fracciones de centavo, vital para que los pequeños proyectos forestales no diluyan sus ingresos en gas), confirmaciones en pocos segundos y un protocolo de smart contracts (Soroban) optimizado para la eficiencia energética y la sostenibilidad.

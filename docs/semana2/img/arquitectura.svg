@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" style="background:#06140f; font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#04120c"/>
+      <stop offset="50%" stop-color="#081e15"/>
+      <stop offset="100%" stop-color="#0d2b1f"/>
+    </linearGradient>
+    <linearGradient id="user-box" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#14382a"/>
+      <stop offset="100%" stop-color="#0a1f16"/>
+    </linearGradient>
+    <linearGradient id="ui-box" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#104a35"/>
+      <stop offset="100%" stop-color="#0d2e22"/>
+    </linearGradient>
+    <linearGradient id="sc-box" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0d5c3f"/>
+      <stop offset="100%" stop-color="#093826"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <filter id="glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#10b981"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#38bdf8"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <!-- Header -->
+  <g transform="translate(60, 40)">
+    <rect x="0" y="0" width="44" height="44" rx="10" fill="url(#accent)"/>
+    <path d="M22 10 C14 16 12 24 22 34 C32 24 30 16 22 10 Z" fill="#04120c"/>
+    <path d="M22 14 L22 28" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+
+    <text x="60" y="30" fill="#ffffff" font-size="26" font-weight="800" letter-spacing="-0.5">VERDE VERIFICADO</text>
+    <text x="340" y="30" fill="#10b981" font-size="22" font-weight="300">|</text>
+    <text x="360" y="30" fill="#34d399" font-size="20" font-weight="600">DIAGRAMA DE ARQUITECTURA</text>
+    <text x="60" y="54" fill="#94a3b8" font-size="14">Fiel al diagrama Mermaid y componentes de la Sección 7 del Product Blueprint</text>
+  </g>
+
+  <!-- ================= SECTION 1: USUARIOS ================= -->
+  <g transform="translate(60, 140)" filter="url(#glow)">
+    <rect width="260" height="680" rx="16" fill="#081c14" stroke="#1b4d38" stroke-width="1.5"/>
+    <rect x="0" y="0" width="260" height="48" rx="16" fill="#123d2c"/>
+    <rect x="0" y="32" width="260" height="16" fill="#123d2c"/>
+    <text x="130" y="32" fill="#34d399" font-size="16" font-weight="700" text-anchor="middle">USUARIOS</text>
+
+    <!-- 4 User Cards -->
+    <g transform="translate(18, 70)">
+      <rect width="224" height="120" rx="12" fill="url(#user-box)" stroke="#1e543e" stroke-width="1"/>
+      <circle cx="36" cy="36" r="18" fill="#10b981" fill-opacity="0.2"/>
+      <text x="36" y="42" fill="#34d399" font-size="18" text-anchor="middle">🌲</text>
+      <text x="68" y="42" fill="#ffffff" font-size="15" font-weight="700">Proyecto forestal</text>
+      <text x="16" y="86" fill="#cbd5e1" font-size="12">Generador comunitario</text>
+      <text x="16" y="104" fill="#cbd5e1" font-size="12">de créditos certificados.</text>
+    </g>
+
+    <g transform="translate(18, 215)">
+      <rect width="224" height="120" rx="12" fill="url(#user-box)" stroke="#1e543e" stroke-width="1"/>
+      <circle cx="36" cy="36" r="18" fill="#10b981" fill-opacity="0.2"/>
+      <text x="36" y="42" fill="#34d399" font-size="18" text-anchor="middle">🔍</text>
+      <text x="68" y="42" fill="#ffffff" font-size="15" font-weight="700">Verificador</text>
+      <text x="16" y="86" fill="#cbd5e1" font-size="12">Auditor técnico acreditado</text>
+      <text x="16" y="104" fill="#cbd5e1" font-size="12">para originación y emisión.</text>
+    </g>
+
+    <g transform="translate(18, 360)">
+      <rect width="224" height="120" rx="12" fill="url(#user-box)" stroke="#1e543e" stroke-width="1"/>
+      <circle cx="36" cy="36" r="18" fill="#10b981" fill-opacity="0.2"/>
+      <text x="36" y="42" fill="#34d399" font-size="18" text-anchor="middle">🏢</text>
+      <text x="68" y="42" fill="#ffffff" font-size="15" font-weight="700">Comprador corp.</text>
+      <text x="16" y="86" fill="#cbd5e1" font-size="12">Adquiere y retira créditos</text>
+      <text x="16" y="104" fill="#cbd5e1" font-size="12">para compensación.</text>
+    </g>
+
+    <g transform="translate(18, 505)">
+      <rect width="224" height="120" rx="12" fill="url(#user-box)" stroke="#1e543e" stroke-width="1"/>
+      <circle cx="36" cy="36" r="18" fill="#10b981" fill-opacity="0.2"/>
+      <text x="36" y="42" fill="#34d399" font-size="18" text-anchor="middle">⚖️</text>
+      <text x="68" y="42" fill="#ffffff" font-size="15" font-weight="700">Auditor / Ciudadano</text>
+      <text x="16" y="86" fill="#cbd5e1" font-size="12">Auditoría independiente</text>
+      <text x="16" y="104" fill="#cbd5e1" font-size="12">y consulta pública.</text>
+    </g>
+  </g>
+
+  <!-- ================= SECTION 2: INTERFAZ & BILLETERA ================= -->
+  <!-- Interfaz Web -->
+  <g transform="translate(420, 200)" filter="url(#glow)">
+    <rect width="320" height="260" rx="16" fill="url(#ui-box)" stroke="#10b981" stroke-width="2"/>
+    <rect x="0" y="0" width="320" height="46" rx="16" fill="#10b981"/>
+    <rect x="0" y="30" width="320" height="16" fill="#10b981"/>
+    <text x="160" y="30" fill="#04120c" font-size="15" font-weight="800" text-anchor="middle">INTERFAZ WEB VERDE VERIFICADO</text>
+    
+    <g transform="translate(20, 68)">
+      <text x="0" y="20" fill="#ffffff" font-size="14" font-weight="700">Módulos de la Aplicación:</text>
+      <text x="0" y="52" fill="#cbd5e1" font-size="13.5">• Consulta pública libre de créditos</text>
+      <text x="0" y="80" fill="#cbd5e1" font-size="13.5">• Emisión (individual y por lotes)</text>
+      <text x="0" y="108" fill="#cbd5e1" font-size="13.5">• Transferencia de propiedad</text>
+      <text x="0" y="136" fill="#cbd5e1" font-size="13.5">• Retiro irreversible de compensación</text>
+      <text x="0" y="166" fill="#34d399" font-size="12">Interacción visual sin exponer llaves</text>
+    </g>
+  </g>
+
+  <!-- Billetera Freighter -->
+  <g transform="translate(420, 520)" filter="url(#glow)">
+    <rect width="320" height="180" rx="16" fill="#0c231a" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="0" y="0" width="320" height="42" rx="16" fill="#0369a1"/>
+    <rect x="0" y="26" width="320" height="16" fill="#0369a1"/>
+    <text x="160" y="28" fill="#ffffff" font-size="15" font-weight="700" text-anchor="middle">BILLETERA FREIGHTER</text>
+    
+    <g transform="translate(20, 60)">
+      <text x="0" y="20" fill="#e0f2fe" font-size="13.5">• Firma criptográfica de transacciones</text>
+      <text x="0" y="48" fill="#e0f2fe" font-size="13.5">• Custodia local sin intermediarios</text>
+      <text x="0" y="76" fill="#e0f2fe" font-size="13.5">• Autorización de cambios de estado</text>
+      <text x="0" y="102" fill="#38bdf8" font-size="12">Firma segura directa en navegador</text>
+    </g>
+  </g>
+
+  <!-- ================= SECTION 3: PROTOCOLO & BLOCKCHAIN ================= -->
+  <!-- Stellar RPC Node -->
+  <g transform="translate(840, 360)" filter="url(#glow)">
+    <rect width="280" height="180" rx="16" fill="#0a261c" stroke="#1e543e" stroke-width="1.5"/>
+    <rect x="0" y="0" width="280" height="42" rx="16" fill="#134130"/>
+    <rect x="0" y="26" width="280" height="16" fill="#134130"/>
+    <text x="140" y="28" fill="#34d399" font-size="15" font-weight="700" text-anchor="middle">STELLAR RPC NODE</text>
+    
+    <g transform="translate(18, 60)">
+      <text x="0" y="20" fill="#cbd5e1" font-size="13.5">• Entrada a la red descentralizada</text>
+      <text x="0" y="48" fill="#cbd5e1" font-size="13.5">• Recepción de transacciones</text>
+      <text x="0" y="76" fill="#cbd5e1" font-size="13.5">• Lecturas y consultas sin firma</text>
+      <text x="0" y="102" fill="#34d399" font-size="12">Canal estandarizado de comunicación</text>
+    </g>
+  </g>
+
+  <!-- Smart Contract Soroban -->
+  <g transform="translate(1220, 200)" filter="url(#glow)">
+    <rect width="320" height="260" rx="16" fill="url(#sc-box)" stroke="#10b981" stroke-width="2"/>
+    <rect x="0" y="0" width="320" height="46" rx="16" fill="#10b981"/>
+    <rect x="0" y="30" width="320" height="16" fill="#10b981"/>
+    <text x="160" y="30" fill="#04120c" font-size="15" font-weight="800" text-anchor="middle">CONTRATO SOROBAN (verde-verificado)</text>
+    
+    <g transform="translate(20, 68)">
+      <text x="0" y="20" fill="#ffffff" font-size="14" font-weight="700">Reglas de Negocio Autónomas:</text>
+      <text x="0" y="52" fill="#cbd5e1" font-size="13.5">• Control de verificadores autorizados</text>
+      <text x="0" y="80" fill="#cbd5e1" font-size="13.5">• Unicidad de IDs (Anti-doble conteo)</text>
+      <text x="0" y="108" fill="#cbd5e1" font-size="13.5">• Retiros irreversibles inmutables</text>
+      <text x="0" y="136" fill="#cbd5e1" font-size="13.5">• Trazabilidad histórica paginada</text>
+      <text x="0" y="166" fill="#34d399" font-size="12">Ejecución determinista en la red</text>
+    </g>
+  </g>
+
+  <!-- Ledger & Explorer -->
+  <g transform="translate(1220, 520)" filter="url(#glow)">
+    <rect width="320" height="220" rx="16" fill="#081c14" stroke="#1b4d38" stroke-width="1.5"/>
+    <rect x="0" y="0" width="320" height="42" rx="16" fill="#123d2c"/>
+    <rect x="0" y="26" width="320" height="16" fill="#123d2c"/>
+    <text x="160" y="28" fill="#34d399" font-size="15" font-weight="700" text-anchor="middle">LEDGER STELLAR &amp; STELLAR EXPERT</text>
+    
+    <g transform="translate(20, 60)">
+      <text x="0" y="20" fill="#cbd5e1" font-size="13.5">• Almacenamiento inmutable en Testnet</text>
+      <text x="0" y="48" fill="#cbd5e1" font-size="13.5">• Persistencia con retención de TTL</text>
+      <text x="0" y="76" fill="#cbd5e1" font-size="13.5">• Registra créditos, retiros e historial</text>
+      <text x="0" y="104" fill="#cbd5e1" font-size="13.5">• Explorador público independiente</text>
+      <text x="0" y="132" fill="#10b981" font-size="12" font-weight="600">Auditoría pública abierta para terceros</text>
+    </g>
+  </g>
+
+  <!-- ================= CONNECTING ARROWS ================= -->
+  <!-- Users to UI -->
+  <path d="M 320 330 L 420 330" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrow)"/>
+  
+  <!-- UI to Freighter -->
+  <path d="M 520 460 L 520 520" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <text x="530" y="495" fill="#38bdf8" font-size="11" font-weight="600">Solicitud de firma</text>
+
+  <!-- Freighter to RPC -->
+  <path d="M 740 610 L 980 610 L 980 540" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="760" y="600" fill="#38bdf8" font-size="11" font-weight="600">Transacciones autorizadas</text>
+
+  <!-- UI to RPC (Read queries) -->
+  <path d="M 740 330 L 840 400" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="745" y="355" fill="#34d399" font-size="11" font-weight="600">Lecturas y consultas sin firma</text>
+
+  <!-- RPC to Smart Contract -->
+  <path d="M 1120 420 L 1220 350" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Smart Contract to Ledger -->
+  <path d="M 1380 460 L 1380 520" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="1390" y="495" fill="#34d399" font-size="11" font-weight="600">Registra créditos, retiros e historial</text>
+
+  <!-- Auditor direct audit line to Explorer -->
+  <path d="M 320 670 Q 770 820 1220 670" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,6" fill="none" marker-end="url(#arrow)"/>
+  <text x="710" y="800" fill="#94a3b8" font-size="12" font-weight="600">Auditoría independiente en Stellar Expert</text>
+
+</svg>
