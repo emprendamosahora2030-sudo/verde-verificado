@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Verde Verificado · Créditos de carbono verificables</title>
+<meta name="description" content="Consulta pública, verificación de certificados y gestión del ciclo de vida de créditos de carbono sobre Stellar testnet.">
+<style>
+:root{--bg:#0b1410;--panel:#13201a;--panel2:#182a22;--line:#25382e;--tx:#e8efe9;--mut:#8fa396;--gold:#7fd99b;--ok:#5fcf8a;--bad:#ff7a6b;--onacc:#07140d;--r:14px;
+--serif:Georgia,"Times New Roman",serif;--mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;--sans:system-ui,"Segoe UI",Helvetica,Arial,sans-serif}
+@media (prefers-color-scheme:light){:root:not([data-t="d"]){--bg:#f4f1e8;--panel:#fffdf6;--panel2:#f0ecdf;--line:#d9d2bd;--tx:#1b2a21;--mut:#5d6f63;--gold:#1f6b3f;--ok:#1f7a45;--bad:#b3392c;--onacc:#ffffff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 var(--sans)}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line)}
+.brand{font-family:var(--serif);font-size:22px;letter-spacing:.2px}.brand b{color:var(--gold)}
+.net{font:12px var(--mono);color:var(--mut);border:1px solid var(--line);padding:3px 9px;border-radius:99px;margin-left:10px}
+button,.btn{font:600 14px var(--sans);background:var(--gold);color:var(--onacc);border:0;border-radius:10px;padding:10px 16px;cursor:pointer;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+button:hover{transform:translateY(-2px)}button:active{transform:scale(.97)}button:disabled{opacity:.5;cursor:wait}
+button.ghost{background:transparent;color:var(--tx);border:1px solid var(--line)}
+main{max-width:920px;margin:0 auto;padding:22px 18px 70px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.stat small{color:var(--mut);display:block}.stat strong{font:600 28px var(--serif);color:var(--gold)}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+nav button{background:var(--panel);color:var(--mut);border:1px solid var(--line)}
+nav button[aria-selected="true"]{background:var(--gold);color:var(--onacc);border-color:var(--gold)}
+section{display:none;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:22px;animation:in .45s cubic-bezier(.16,1,.3,1)}
+section.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+h2{font:600 22px var(--serif);margin:0 0 4px}p.sub{color:var(--mut);margin:0 0 16px}
+label{display:block;font-size:13px;color:var(--mut);margin:12px 0 4px}
+input{width:100%;background:var(--panel2);color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:15px var(--mono)}
+input:focus{outline:2px solid var(--gold);outline-offset:1px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:end}.row>div{flex:1;min-width:200px}
+.out{margin-top:18px}
+.card{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:16px}
+.kv{display:grid;grid-template-columns:150px 1fr;gap:6px 12px;font-size:14px}.kv dt{color:var(--mut)}.kv dd{margin:0;font-family:var(--mono);word-break:break-all}
+.tag{display:inline-block;padding:2px 10px;border-radius:99px;font:600 12px var(--sans)}
+.tag.ok{background:color-mix(in srgb,var(--ok) 20%,transparent);color:var(--ok)}.tag.bad{background:color-mix(in srgb,var(--bad) 20%,transparent);color:var(--bad)}
+.tl{list-style:none;margin:16px 0 0;padding:0 0 0 22px;border-left:2px solid var(--line)}
+.tl li{position:relative;margin:0 0 14px;padding-left:12px;animation:in .5s cubic-bezier(.16,1,.3,1) both}
+.tl li::before{content:"";position:absolute;left:-30px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px var(--panel)}
+.tl small{color:var(--mut);display:block;font-family:var(--mono);word-break:break-all}
+.msg{margin-top:14px;padding:12px 14px;border-radius:10px;font-size:14px}.msg.ok{background:color-mix(in srgb,var(--ok) 14%,transparent);border:1px solid var(--ok)}
+.msg.bad{background:color-mix(in srgb,var(--bad) 14%,transparent);border:1px solid var(--bad)}.msg.info{background:var(--panel2);border:1px solid var(--line);color:var(--mut)}
+a{color:var(--gold)}code{font-family:var(--mono);font-size:.9em}
+.cert{background:#fffdf6;color:#1b2a21;border:3px double #1f6b3f;border-radius:6px;padding:28px;text-align:center}
+.cert h3{font:600 26px var(--serif);margin:0 0 6px}.cert .big{font:600 44px var(--serif);color:#1f6b3f}.cert p{margin:6px 0;font-size:14px}.cert .h{font:11px var(--mono);word-break:break-all}
+footer{max-width:920px;margin:0 auto;padding:0 18px 40px;color:var(--mut);font-size:13px}
+@media print{body *{visibility:hidden}.cert,.cert *{visibility:visible}.cert{position:absolute;inset:0;margin:20px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div><span class="brand">Verde <b>Verificado</b></span><span class="net">STELLAR · TESTNET</span></div>
+  <div><span id="wallet" style="font:13px var(--mono);color:var(--mut);margin-right:10px"></span><button id="connect" class="ghost">Conectar Freighter</button></div>
+</header>
+<main>
+  <div class="stats" aria-live="polite">
+    <div class="stat"><small>Toneladas emitidas</small><strong id="s-em">—</strong></div>
+    <div class="stat"><small>Toneladas retiradas</small><strong id="s-re">—</strong></div>
+    <div class="stat"><small>Contrato</small><strong style="font-size:15px"><a id="c-link" target="_blank" rel="noopener">—</a></strong></div>
+  </div>
+
+  <nav role="tablist">
+    <button role="tab" data-t="consulta" aria-selected="true">1 · Consultar</button>
+    <button role="tab" data-t="verificar">2 · Verificar PDF</button>
+    <button role="tab" data-t="emitir">3 · Emitir</button>
+    <button role="tab" data-t="transferir">4 · Transferir</button>
+    <button role="tab" data-t="retirar">5 · Retirar</button>
+    <button role="tab" data-t="certificado">6 · Certificado</button>
+  </nav>
+
+  <section id="consulta" class="on">
+    <h2>Consulta pública</h2><p class="sub">Sin cuenta ni billetera. Escribe el código de un crédito y mira su estado y su historial completo.</p>
+    <div class="row"><div><label for="q-id">Código del crédito</label><input id="q-id" placeholder="VV001" maxlength="32" autocomplete="off"></div><button id="q-go">Consultar</button></div>
+    <div class="out" id="q-out"></div>
+  </section>
+
+  <section id="verificar">
+    <h2>Verificar un certificado PDF</h2><p class="sub">El archivo no se sube a ningún servidor: se calcula su huella SHA-256 en tu navegador y se compara con la registrada en la cadena.</p>
+    <label for="v-id">Código del crédito</label><input id="v-id" maxlength="32" placeholder="VV001" autocomplete="off">
+    <label for="v-file">Certificado (PDF u otro archivo)</label><input id="v-file" type="file">
+    <p style="margin:14px 0 0"><button id="v-go">Comparar con la cadena</button></p>
+    <div class="out" id="v-out"></div>
+  </section>
+
+  <section id="emitir">
+    <h2>Emitir un crédito</h2><p class="sub">Solo para verificadores autorizados. Conecta Freighter con una cuenta de verificador.</p>
+    <div class="row"><div><label for="e-id">Código del crédito</label><input id="e-id" maxlength="32" placeholder="VV2026_001"></div>
+    <div><label for="e-t">Toneladas de CO₂</label><input id="e-t" type="number" min="1" step="1" placeholder="100"></div></div>
+    <label for="e-p">Dirección del propietario (G…)</label><input id="e-p" placeholder="G…">
+    <label for="e-pr">Código del proyecto de origen</label><input id="e-pr" maxlength="32" placeholder="PROY_ANAIME">
+    <label for="e-f">Certificado técnico (se guarda solo su huella)</label><input id="e-f" type="file">
+    <p style="margin:14px 0 0"><button id="e-go">Firmar y emitir</button></p>
+    <div class="out" id="e-out"></div>
+  </section>
+
+  <section id="transferir">
+    <h2>Transferir un crédito</h2><p class="sub">Solo el propietario actual puede transferirlo, y solo mientras no esté retirado.</p>
+    <div class="row"><div><label for="t-id">Código del crédito</label><input id="t-id" maxlength="32"></div>
+    <div><label for="t-n">Nueva dirección propietaria (G…)</label><input id="t-n" placeholder="G…"></div></div>
+    <p style="margin:14px 0 0"><button id="t-go">Firmar y transferir</button></p>
+    <div class="out" id="t-out"></div>
+  </section>
+
+  <section id="retirar">
+    <h2>Retirar (compensar) un crédito</h2><p class="sub">Acción definitiva e irreversible: el crédito queda usado y nadie más puede reclamarlo.</p>
+    <div class="row"><div><label for="r-id">Código del crédito</label><input id="r-id" maxlength="32"></div>
+    <div><label for="r-b">A nombre de (empresa o código)</label><input id="r-b" maxlength="32" placeholder="EMPRESA_XYZ"></div></div>
+    <p style="margin:14px 0 0"><button id="r-go">Firmar y retirar</button></p>
+    <div class="out" id="r-out"></div>
+  </section>
+
+  <section id="certificado">
+    <h2>Certificado de compensación</h2><p class="sub">Disponible para créditos ya retirados. Incluye el código y la huella para validación pública.</p>
+    <div class="row"><div><label for="c-id">Código del crédito</label><input id="c-id" maxlength="32"></div><button id="c-go">Generar</button></div>
+    <div class="out" id="c-out"></div>
+  </section>
+</main>
+<footer>Red de pruebas (testnet): no hay dinero real. Los datos se leen directamente del contrato; esta página no tiene servidor propio. <a href="https://github.com/emprendamosahora2030-sudo/verde-verificado" target="_blank" rel="noopener">Código en GitHub</a>.</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@stellar/stellar-sdk@13.1.0/dist/stellar-sdk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@stellar/freighter-api@3.0.0/build/index.min.js"></script>
+<script>
+"use strict";
+/* ---------- Configuración (cambia solo estas 3 líneas) ---------- */
+const CONTRACT_ID = "CC7ZF3ZK7PGLKZXQASAROTT6WPXRYFP5PV2BQSSUEMEO7VXWE5JKDMLI"; // Verde Verificado · testnet
+const RPC_URL     = "https://soroban-testnet.stellar.org";
+const PASSPHRASE  = "Test SDF Network ; September 2015";
+/* ---------------------------------------------------------------- */
+const S = window.StellarSdk, F = window.freighterApi;
+const server = new S.rpc.Server(RPC_URL);
+const contract = new S.Contract(CONTRACT_ID);
+const READER = "GBXFCFINTO7PODHS5TKQRYSPB3UDRZELB7NM5DWI5ZAET6XKZZYPSWM6"; // cuenta solo para simular lecturas
+let wallet = null;
+const $ = id => document.getElementById(id);
+const ERR = {1:"El contrato ya estaba inicializado.",2:"No autorizado: esta cuenta no tiene permiso para esa acción.",3:"Ya existe un crédito con ese código.",4:"No existe un crédito con ese código.",5:"Ese crédito ya fue retirado; no admite más operaciones.",6:"Las toneladas deben ser mayores que cero.",7:"La nueva dirección es la misma que la actual.",8:"El lote está vacío.",9:"El lote supera el máximo permitido."};
+
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function msg(el,cls,html){el.innerHTML=`<div class="msg ${cls}" role="status">${html}</div>`}
+function sym(v){v=(v||"").trim(); if(!/^[A-Za-z0-9_]{1,32}$/.test(v)) throw new Error("Usa solo letras, números y guion bajo (máx. 32 caracteres)."); return S.nativeToScVal(v,{type:"symbol"})}
+function addr(v){v=(v||"").trim(); if(!S.StrKey.isValidEd25519PublicKey(v)&&!S.StrKey.isValidContract(v)) throw new Error("La dirección no es válida (debe empezar por G o C)."); return S.nativeToScVal(v,{type:"address"})}
+function human(e){const m=String(e&&e.message||e).match(/Error\(Contract, #(\d+)\)/); return m?(ERR[m[1]]||"Error del contrato #"+m[1]):String(e&&e.message||e)}
+function hex(buf){return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,"0")).join("")}
+async function sha256(file){return new Uint8Array(await crypto.subtle.digest("SHA-256",await file.arrayBuffer()))}
+function fecha(ts){return new Date(Number(ts)*1000).toLocaleString("es-CO")}
+function variante(x){return Array.isArray(x)?String(x[0]):String(x)}
+
+/* ---------- Lectura (simulación, sin firma) ---------- */
+async function leer(fn,...args){
+  const acc = new S.Account(wallet||READER,"0");
+  const tx = new S.TransactionBuilder(acc,{fee:"100",networkPassphrase:PASSPHRASE}).addOperation(contract.call(fn,...args)).setTimeout(30).build();
+  const sim = await server.simulateTransaction(tx);
+  if(S.rpc.Api.isSimulationError(sim)) throw new Error(sim.error);
+  return sim.result ? S.scValToNative(sim.result.retval) : null;
+}
+/* ---------- Escritura (firma con Freighter) ---------- */
+async function escribir(fn,...args){
+  if(!wallet) throw new Error("Primero conecta Freighter (botón de arriba).");
+  const acc = await server.getAccount(wallet);
+  let tx = new S.TransactionBuilder(acc,{fee:"1000000",networkPassphrase:PASSPHRASE}).addOperation(contract.call(fn,...args)).setTimeout(60).build();
+  tx = await server.prepareTransaction(tx);   // simula; falla aquí si el contrato rechaza
+  const r = await F.signTransaction(tx.toXDR(),{networkPassphrase:PASSPHRASE,address:wallet});
+  if(r.error) throw new Error(r.error.message||r.error);
+  const signed = S.TransactionBuilder.fromXDR(r.signedTxXdr,PASSPHRASE);
+  const sent = await server.sendTransaction(signed);
+  if(sent.status==="ERROR") throw new Error("La red rechazó la transacción.");
+  for(let i=0;i<30;i++){
+    const g = await server.getTransaction(sent.hash);
+    if(g.status==="SUCCESS") return {hash:sent.hash,val:g.returnValue?S.scValToNative(g.returnValue):null};
+    if(g.status==="FAILED") throw new Error("La transacción falló en la red.");
+    await new Promise(r=>setTimeout(r,1500));
+  }
+  throw new Error("Tiempo de espera agotado; revisa el hash en Stellar Expert: "+sent.hash);
+}
+const txLink = h => `<a target="_blank" rel="noopener" href="https://stellar.expert/explorer/testnet/tx/${h}">${h.slice(0,10)}…${h.slice(-6)}</a>`;
+
+/* ---------- Estadísticas y navegación ---------- */
+async function stats(){
+  try{ $("s-em").textContent = String(await leer("total_emitido")); $("s-re").textContent = String(await leer("total_retirado")); }
+  catch(e){ $("s-em").textContent = $("s-re").textContent = "n/d"; }
+}
+$("c-link").textContent = CONTRACT_ID.slice(0,6)+"…"+CONTRACT_ID.slice(-6);
+$("c-link").href = "https://stellar.expert/explorer/testnet/contract/"+CONTRACT_ID;
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("nav button").forEach(x=>x.setAttribute("aria-selected",x===b));
+  document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id===b.dataset.t));
+});
+$("connect").onclick = async()=>{
+  try{
+    const c = await F.requestAccess(); if(c.error) throw new Error(c.error.message||c.error);
+    wallet = c.address; $("wallet").textContent = wallet.slice(0,5)+"…"+wallet.slice(-5); $("connect").textContent="Conectado ✓";
+  }catch(e){ alert("No se pudo conectar Freighter: "+(e.message||e)+"\nInstala la extensión Freighter y selecciona la red Testnet."); }
+};
+function run(btn,out,fn){ btn.onclick = async()=>{ btn.disabled=true; msg(out,"info","Procesando…"); try{ await fn(); }catch(e){ msg(out,"bad","✗ "+esc(human(e))); } btn.disabled=false; }; }
+
+/* ---------- 1. Consulta pública ---------- */
+function ficha(c){
+  const retirado = variante(c.estado)==="Retirado";
+  return `<div class="card"><dl class="kv">
+    <dt>Estado</dt><dd><span class="tag ${retirado?"bad":"ok"}">${retirado?"RETIRADO (usado)":"EMITIDO (disponible)"}</span></dd>
+    <dt>Código</dt><dd>${esc(c.id)}</dd><dt>Toneladas CO₂</dt><dd>${esc(c.toneladas)}</dd>
+    <dt>Propietario</dt><dd>${esc(c.propietario)}</dd><dt>Verificador</dt><dd>${esc(c.verificador)}</dd>
+    <dt>Proyecto</dt><dd>${esc(c.proyecto)}</dd><dt>Emitido</dt><dd>${fecha(c.emitido_en)}</dd>
+    ${retirado?`<dt>Retirado</dt><dd>${fecha(c.retirado_en)} · a nombre de ${esc(c.beneficiario_retiro)}</dd>`:""}
+    <dt>Huella SHA-256</dt><dd>${hex(c.hash_certificado)}</dd></dl></div>`;
+}
+run($("q-go"),$("q-out"),async()=>{
+  const id=$("q-id").value, out=$("q-out"), idv=sym(id);
+  const c = await leer("verificar_credito",idv);
+  const n = await leer("total_movimientos",idv);
+  const h = await leer("historial_credito",idv,S.nativeToScVal(0,{type:"u32"}),S.nativeToScVal(50,{type:"u32"}));
+  const nombres={Emision:"Emisión",Transferencia:"Transferencia",Retiro:"Retiro"};
+  out.innerHTML = ficha(c) + `<h3 style="font:600 18px var(--serif);margin:20px 0 0">Historial (${n} movimientos)</h3><ol class="tl">` +
+    h.map((m,i)=>`<li style="animation-delay:${i*80}ms"><b>${nombres[variante(m.tipo)]||variante(m.tipo)}</b> · ${fecha(m.timestamp)}
+      <small>${m.propietario_anterior?"de "+esc(m.propietario_anterior)+" → ":""}${esc(m.propietario)}${m.beneficiario_retiro?" · a nombre de "+esc(m.beneficiario_retiro):""}</small>
+      <small>ledger ${esc(m.ledger)}</small></li>`).join("")+"</ol>";
+});
+
+/* ---------- 2. Verificar PDF ---------- */
+run($("v-go"),$("v-out"),async()=>{
+  const f=$("v-file").files[0]; if(!f) throw new Error("Selecciona el archivo del certificado.");
+  const h = await sha256(f), idv = sym($("v-id").value);
+  const ok = await leer("verificar_certificado",idv,S.nativeToScVal(h,{type:"bytes"}));
+  msg($("v-out"),ok?"ok":"bad", ok?`✓ <b>Auténtico.</b> La huella del archivo coincide con la registrada en la cadena.<br><small><code>${hex(h)}</code></small>`
+                                  :`✗ <b>No coincide.</b> El archivo fue alterado o no corresponde a ese crédito.<br><small><code>${hex(h)}</code></small>`);
+});
+
+/* ---------- 3. Emitir ---------- */
+run($("e-go"),$("e-out"),async()=>{
+  const f=$("e-f").files[0]; if(!f) throw new Error("Adjunta el certificado técnico para calcular su huella.");
+  const t=Number($("e-t").value); if(!Number.isInteger(t)||t<1) throw new Error("Las toneladas deben ser un entero mayor que cero.");
+  if(!wallet) throw new Error("Primero conecta Freighter con la cuenta del verificador.");
+  const h = await sha256(f);
+  const r = await escribir("emitir_credito",addr(wallet),sym($("e-id").value),addr($("e-p").value),S.nativeToScVal(t,{type:"u32"}),S.nativeToScVal(h,{type:"bytes"}),sym($("e-pr").value));
+  msg($("e-out"),"ok",`✓ Crédito emitido. Transacción ${txLink(r.hash)}`); stats();
+});
+
+/* ---------- 4. Transferir ---------- */
+run($("t-go"),$("t-out"),async()=>{
+  const r = await escribir("transferir_credito",sym($("t-id").value),addr($("t-n").value));
+  msg($("t-out"),"ok",`✓ Transferido. Transacción ${txLink(r.hash)}`);
+});
+
+/* ---------- 5. Retirar ---------- */
+run($("r-go"),$("r-out"),async()=>{
+  if(!confirm("El retiro es DEFINITIVO e irreversible. ¿Continuar?")) throw new Error("Cancelado por el usuario.");
+  const r = await escribir("retirar_credito",sym($("r-id").value),sym($("r-b").value));
+  msg($("r-out"),"ok",`✓ Crédito retirado. Transacción ${txLink(r.hash)}`); stats();
+});
+
+/* ---------- 6. Certificado ---------- */
+run($("c-go"),$("c-out"),async()=>{
+  const c = await leer("verificar_credito",sym($("c-id").value));
+  if(variante(c.estado)!=="Retirado") throw new Error("Ese crédito aún no está retirado; no hay certificado de compensación.");
+  $("c-out").innerHTML = `<div class="cert"><p style="letter-spacing:3px;font-size:12px">VERDE VERIFICADO · STELLAR TESTNET</p><h3>Certificado de compensación</h3>
+    <p>Se certifica la compensación definitiva de</p><div class="big">${esc(c.toneladas)} t CO₂</div>
+    <p>a nombre de <b>${esc(c.beneficiario_retiro)}</b></p><p>Crédito <b>${esc(c.id)}</b> · Proyecto ${esc(c.proyecto)}</p>
+    <p>Retirado el ${fecha(c.retirado_en)}</p><p class="h">Huella del certificado técnico: ${hex(c.hash_certificado)}</p>
+    <p class="h">Contrato: ${CONTRACT_ID}</p><p style="font-size:12px">Verifica este crédito en la pestaña “Consultar” de esta página o en Stellar Expert.</p></div>
+    <p style="margin-top:14px"><button onclick="window.print()">Imprimir / guardar PDF</button></p>`;
+});
+stats();
+</script>
+</body>
+</html>
