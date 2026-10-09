@@ -27,7 +27,7 @@ La interfaz recorre el flujo principal del MVP del Product Blueprint, desde la e
 
 **Cómo verlo funcionando:** abrir el enlace de Vercel indicado arriba, o ejecutarlo en local con las instrucciones del README. Para probarlo con datos reales se puede consultar el crédito `VV001`.
 
-<!-- Captura: agregar docs/semana3/img/consulta-VV001.png con la consulta de VV001 y enlazarla aquí -->
+![Consulta del crédito VV001](img/consulta-VV001.png)
 
 ## 2. Decisión técnica
 
@@ -60,4 +60,5 @@ _Cada integrante ajusta su fila con lo que realmente hizo antes de entregar._
 - Migrar el SDK del contrato a una versión más reciente y obtener una revisión de seguridad externa antes de mainnet.
 
 **Siguiente paso hacia el MVP:** esta semana se escribe y despliega la versión definitiva de los contratos; después, ejecutar el flujo completo (emitir, transferir, retirar y verificar un PDF) y documentar los hashes de las transacciones.
+
 
