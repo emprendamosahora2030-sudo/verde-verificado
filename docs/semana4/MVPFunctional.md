@@ -33,14 +33,15 @@ Ajustes priorizados: (1) conectar el front con el contrato propio para emitir, t
 
 ## 3. Plan de validación con usuarios
 
-**Usuarios objetivo.** (a) Verificadores y emisores de créditos de carbono, que necesitan registrar y transferir créditos sin duplicidad; (b) empresas compradoras, que necesitan comprobar que un crédito es único y retirarlo a su nombre; (c) entidades públicas o ambientales que consultan el registro.
+**A quién.** Cinco personas por cada perfil de usuario: (a) verificadores o desarrolladores de proyectos de carbono, (b) empresas compradoras y (c) funcionarios ambientales. Se contactan por la red del equipo, en sesiones de 20 minutos por videollamada, con permiso por escrito y sin guardar datos personales de más.
 
-**Hipótesis a validar.** Un registro con historial público y certificado verificable reduce el tiempo y la desconfianza al comprobar un crédito, frente a hojas de cálculo y PDF enviados por correo.
+**Hipótesis (umbrales fijados antes de ver resultados).**
+1. Creemos que una empresa compradora consultará el historial de un crédito antes de comprarlo, porque hoy se fía del vendedor. Lo sabremos si 4 de 5 consultan un crédito de prueba sin que se les pida.
+2. Creemos que un verificador emitirá un crédito desde su cuenta sin ayuda. Lo sabremos si 4 de 5 completan la emisión con Freighter en menos de 5 minutos.
+3. Creemos que un funcionario ambiental comprobará un certificado PDF contra el hash registrado. Lo sabremos si 3 de 5 lo logran sin ayuda.
 
-**Cómo lo haremos.** Entre las semanas 5 y 6 realizaremos entre 5 y 8 entrevistas de 20 minutos con personas de los tres perfiles: verificadores, compradores corporativos y funcionarios ambientales. En cada sesión mostraremos el producto en línea y pediremos que ejecuten una tarea sin ayuda: consultar un crédito, verificar un PDF y retirar un crédito de demostración.
+**Cómo se observa.** La tarea es un escenario, no una instrucción: "Te llega un crédito de un proveedor y decides si lo compras". En cada sesión, una persona dirige y otra anota, y nadie ayuda ni señala botones. Se pregunta por hechos del pasado ("cuéntame de la última vez que verificaste un crédito"), no por opiniones sobre el producto.
 
-**Qué mediremos.** Porcentaje de personas que completan cada tarea sin ayuda; tiempo para completarla; punto exacto donde dudan o se equivocan (en especial la firma con Freighter); y una pregunta final: "¿qué necesitaría para usar esto con un crédito real?".
+**Qué se registra.** Tarea completada (sí o no), tiempo, errores de firma y el punto exacto donde la persona se traba, con la observación separada de la interpretación. Cada fricción se prioriza por gravedad, frecuencia y esfuerzo de arreglo.
 
-**Criterio de éxito.** Al menos 4 de cada 5 participantes completan consultar y verificar sin ayuda, y al menos la mitad identifica el certificado como prueba suficiente de unicidad.
-
-**Qué haremos con los resultados.** Priorizaremos los tres ajustes con más fricción, corregiremos el flujo de firma y registraremos las respuestas en el repositorio. Si dos o más verificadores muestran interés, avanzaremos a una prueba piloto con un solo proyecto, previa auditoría del contrato.
+**Decisión.** Si una hipótesis no alcanza su umbral, se corrige primero el paso con más fricción (probablemente la firma) y se repite con nuevas personas. Si se cumple la primera, el siguiente paso es un piloto con un proyecto real, previa auditoría del contrato.
