@@ -3,7 +3,7 @@
 ## Evidencias verificables
 
 - **Producto en línea:** https://verde-verificado-app-emprendamosahora2030-5355s-projects.vercel.app
-- **Video demo + pitch (≤ 3 min):** [PEGAR AQUÍ EL ENLACE PÚBLICO DEL VIDEO]
+- **Video demo + pitch (≤ 3 min):** [Pendiente de publicar (depende de la landing del grupo, en elaboración)]
 - **Contrato inteligente (Soroban, testnet):** https://stellar.expert/explorer/testnet/contract/CC7ZF3ZK7PGLKZXQASAROTT6WPXRYFP5PV2BQSSUEMEO7VXWE5JKDMLI
 - **Transacciones testnet del ciclo de vida del crédito VV001** (1 oct 2026, UTC):
   - Emisión (`emitido VV001`, 20:22:12): [PEGAR ENLACE stellar.expert/explorer/testnet/tx/…]
