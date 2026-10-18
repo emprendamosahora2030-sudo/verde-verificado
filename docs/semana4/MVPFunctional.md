@@ -6,9 +6,9 @@
 - **Video demo + pitch (≤ 3 min):** [Pendiente de publicar (depende de la landing del grupo, en elaboración)]
 - **Contrato inteligente (Soroban, testnet):** https://stellar.expert/explorer/testnet/contract/CC7ZF3ZK7PGLKZXQASAROTT6WPXRYFP5PV2BQSSUEMEO7VXWE5JKDMLI
 - **Transacciones testnet del ciclo de vida del crédito VV001** (1 oct 2026, UTC):
-  - Emisión (`emitido VV001`, 20:22:12): [PEGAR ENLACE stellar.expert/explorer/testnet/tx/…]
-  - Transferencia (`transferido VV001`, 20:22:17): [PEGAR ENLACE stellar.expert/explorer/testnet/tx/…]
-  - Retiro (`retirado VV001`, 20:22:22, beneficiario EMPRESAS_DEMO): [PEGAR ENLACE stellar.expert/explorer/testnet/tx/…]
+  - Emisión (`emitido VV001`, 20:22:12): [ledger 4972509](https://stellar.expert/explorer/testnet/ledger/4972509)
+  - Transferencia (`transferido VV001`, 20:22:17): [ledger 4972510](https://stellar.expert/explorer/testnet/ledger/4972510)
+  - Retiro (`retirado VV001`, 20:22:22, beneficiario EMPRESAS_DEMO): [ledger 4972511](https://stellar.expert/explorer/testnet/ledger/4972511)
 - **Repositorio:** https://github.com/emprendamosahora2030-sudo/verde-verificado
 
 ## 1. Aprendizajes y ajustes priorizados
