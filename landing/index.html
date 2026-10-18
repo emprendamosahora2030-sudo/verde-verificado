@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es-CO" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verde Verificado - Prototipo Académico en Stellar / Soroban Testnet</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            900: '#064e3b',
+                            950: '#022c22'
+                        },
+                        slate: {
+                            850: '#0f172a',
+                            900: '#090d16',
+                            950: '#030712'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #030712;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #a7f3d0 0%, #10b981 50%, #059669 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030712;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #064e3b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10b981;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-emerald-500 selection:text-slate-950 flex flex-col min-h-screen">
+
+    <!-- ACADEMIC NOTICE BANNER -->
+    <div class="bg-amber-950/90 border-b border-amber-500/40 text-amber-200 text-xs py-2.5 px-4 text-center z-50 relative font-medium">
+        <div class="max-w-7xl mx-auto flex items-center justify-center gap-2">
+            <i class="fas fa-triangle-exclamation text-amber-400 shrink-0"></i>
+            <span>Prototipo en red de pruebas (testnet). Los créditos son de demostración; no representan toneladas reales de CO₂.</span>
+        </div>
+    </div>
+
+    <!-- NAVIGATION HEADER -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-slate-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-700 flex items-center justify-center text-slate-950 shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+                    <i class="fas fa-leaf text-xl"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-tight text-white flex items-center gap-1.5">
+                        Verde <span class="gradient-text font-extrabold">Verificado</span>
+                    </span>
+                    <span class="block text-[10px] text-emerald-400/90 font-mono tracking-widest uppercase">Stellar / Soroban Testnet</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium">
+                <a href="#ejemplo-real" class="text-slate-300 hover:text-emerald-400 transition-colors">Ejemplo Real (VV001)</a>
+                <a href="#como-funciona" class="text-slate-300 hover:text-emerald-400 transition-colors">Cómo Funciona</a>
+                <a href="#que-verifica" class="text-slate-300 hover:text-emerald-400 transition-colors">Qué Verifica Usted</a>
+                <a href="#limites" class="text-slate-300 hover:text-emerald-400 transition-colors">Límites Actuales</a>
+                <a href="#siguientes-pasos" class="text-slate-300 hover:text-emerald-400 transition-colors">Siguientes Pasos</a>
+            </nav>
+
+            <!-- External Action Links -->
+            <div class="hidden sm:flex items-center space-x-3">
+                <a href="https://verde-verificado-app-emprendamosahora2030-5355s-projects.vercel.app" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition-all shadow-md shadow-emerald-500/20 flex items-center gap-1.5">
+                    <i class="fas fa-magnifying-glass"></i> Consultar un Crédito
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" aria-label="Abrir menú" class="lg:hidden text-slate-300 hover:text-white focus:outline-none p-2">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-slate-900/95 border-b border-slate-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#ejemplo-real" class="block py-2 text-slate-300 hover:text-emerald-400 text-sm">Ejemplo Real (VV001)</a>
+            <a href="#como-funciona" class="block py-2 text-slate-300 hover:text-emerald-400 text-sm">Cómo Funciona</a>
+            <a href="#que-verifica" class="block py-2 text-slate-300 hover:text-emerald-400 text-sm">Qué Verifica Usted</a>
+            <a href="#limites" class="block py-2 text-slate-300 hover:text-emerald-400 text-sm">Límites Actuales</a>
+            <a href="#siguientes-pasos" class="block py-2 text-slate-300 hover:text-emerald-400 text-sm">Siguientes Pasos</a>
+            <div class="pt-3 border-t border-slate-800 flex flex-col space-y-2">
+                <a href="https://verde-verificado-app-emprendamosahora2030-5355s-projects.vercel.app" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-emerald-500 text-slate-950 font-bold text-xs text-center">
+                    Consultar un Crédito
+                </a>
+                <a href="https://stellar.expert/explorer/testnet/contract/CC7ZF3ZK7PGLKZXQASAROTT6WPXRYFP5PV2BQSSUEMEO7VXWE5JKDMLI" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-slate-800 text-slate-200 font-bold text-xs text-center border border-slate-700">
+                    Ver Contrato
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="flex-grow">
+
+        <!-- HERO SECTION -->
+        <section class="relative pt-12 pb-20 lg:pt-16 lg:pb-28 overflow-hidden">
+            <!-- Background Ambient Glows -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="max-w-3xl mx-auto text-center space-y-6">
+                    
+                    <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950/80 text-emerald-300 border border-emerald-500/30">
+                        <i class="fas fa-code-branch mr-1.5 text-emerald-400"></i> Prototipo Académico Soroban
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Verde <span class="gradient-text">Verificado</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed">
+                        Registro público y verificable de créditos de carbono en la red Stellar (Soroban, testnet).
+                    </p>
+
+                    <!-- Main Action Buttons -->
+                    <div class="flex flex-wrap items-center justify-center gap-3 pt-4">
+                        <a href="https://verde-verificado-app-emprendamosahora2030-5355s-projects.vercel.app" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-emerald-500/20 flex items-center justify-center">
+                            <i class="fas fa-magnifying-glass mr-2"></i> Consultar un Crédito
+                        </a>
+                        <a href="https://stellar.expert/explorer/testnet/contract/CC7ZF3ZK7PGLKZXQASAROTT6WPXRYFP5PV2BQSSUEMEO7VXWE5JKDMLI" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-sm transition-all flex items-center justify-center">
+                            <i class="fas fa-file-contract mr-2 text-emerald-400"></i> Ver Contrato
+                        </a>
+                        <a href="https://github.com/emprendamosahora2030-sudo/verde-verificado" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-sm transition-all flex items-center justify-center">
+                            <i class="fab fa-github mr-2 text-slate-400"></i> Código en GitHub
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- REAL EXAMPLE SECTION (VV001) -->
+        <section id="ejemplo-real" class="py-12 bg-slate-900/50 border-y border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
+                    <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase bg-emerald-950/80 px-3 py-1 rounded-full border border-emerald-500/30">
+                        Evidencia On-Chain Real
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+                        Ejemplo de Crédito Registrado: <span class="gradient-text">VV001</span>
+                    </h2>
+                    <p class="text-slate-400 text-sm">
+                        Datos técnicos registrados en la prueba de concepto sobre la testnet de Stellar.
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-8 items-start">
+                    
+                    <!-- Credit Spec Card -->
+                    <div class="lg:col-span-6 glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
+                        <div class="flex justify-between items-center pb-4 border-b border-slate-800">
+                            <div>
+                                <span class="text-xs font-mono text-slate-400 uppercase">Identificador de Crédito</span>
+                                <h3 class="text-xl font-bold text-white font-mono">VV001</h3>
+                            </div>
+                            <span class="px-3 py-1 text-xs font-bold rounded-full bg-slate-800 text-slate-300 border border-slate-600">
+                                Estado: Retirado
+                            </span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800">
+                                <span class="text-xs text-slate-400 block">Cantidad</span>
+                                <span class="font-bold text-white">100 tCO₂</span>
+                                <span class="text-[10px] text-slate-400 block">(demostrativas)</span>
+                            </div>
+                            <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800">
+                                <span class="text-xs text-slate-400 block">Proyecto</span>
+                                <span class="font-bold text-white font-mono">PROYVV001</span>
+                            </div>
+                            <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800">
+                                <span class="text-xs text-slate-400 block">Beneficiario del Retiro</span>
+                                <span class="font-bold text-emerald-400 font-mono text-xs">EMPRESAS_DEMO</span>
+                            </div>
+                            <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800">
+                                <span class="text-xs text-slate-400 block">Fecha de Retiro</span>
+                                <span class="font-bold text-white">1 oct 2026</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <span class="text-xs font-mono text-slate-400 block mb-1">Huella Digital SHA-256 del Certificado:</span>
+                            <div class="p-3 rounded-lg bg-slate-950 border border-slate-800 font-mono text-xs text-emerald-400 flex items-center justify-between break-all">
+                                <span>495a2a7eb9702cd9f93cee1e2ddef6897cc77bda8642afdae10d7f2160aeef99</span>
+                                <button onclick="copySHA('495a2a7eb9702cd9f93cee1e2ddef6897cc77bda8642afdae10d7f2160aeef99')" class="text-slate-400 hover:text-white ml-2 p-1" title="Copiar SHA-256">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- On-Chain History -->
+                    <div class="lg:col-span-6 glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
+                        <h3 class="text-base font-bold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
+                            <i class="fas fa-list-check text-emerald-400"></i> Historial de Transacciones en Testnet
+                        </h3>
+
+                        <div class="space-y-3 font-mono text-xs">
+                            
+                            <!-- Step 1 -->
+                            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between">
+                                <div>
+                                    <span class="text-emerald-400 font-bold block">1. Emisión</span>
+                                    <span class="text-slate-400 text-[11px]">Ledger: 4972509</span>
+                                </div>
+                                <a href="https://stellar.expert/explorer/testnet/ledger/4972509" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors flex items-center gap-1 text-[11px]">
+                                    Ver en Explorer <i class="fas fa-external-link-alt text-[9px] text-slate-400"></i>
+                                </a>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between">
+                                <div>
+                                    <span class="text-emerald-400 font-bold block">2. Transferencia</span>
+                                    <span class="text-slate-400 text-[11px]">Ledger: 4972510</span>
+                                </div>
+                                <a href="https://stellar.expert/explorer/testnet/ledger/4972510" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors flex items-center gap-1 text-[11px]">
+                                    Ver en Explorer <i class="fas fa-external-link-alt text-[9px] text-slate-400"></i>
+                                </a>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between">
+                                <div>
+                                    <span class="text-slate-300 font-bold block">3. Retiro</span>
+                                    <span class="text-slate-400 text-[11px]">Ledger: 4972511</span>
+                                </div>
+                                <a href="https://stellar.expert/explorer/testnet/ledger/4972511" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors flex items-center gap-1 text-[11px]">
+                                    Ver en Explorer <i class="fas fa-external-link-alt text-[9px] text-slate-400"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS SECTION -->
+        <section id="como-funciona" class="py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+                    <h2 class="text-3xl font-extrabold text-white">Cómo Funciona</h2>
+                    <p class="text-slate-400 text-sm">El ciclo de vida simplificado de los créditos en el contrato inteligente Soroban.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    
+                    <!-- Step 1 -->
+                    <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-950 text-emerald-400 font-mono font-bold flex items-center justify-center border border-emerald-500/30">
+                            01
+                        </div>
+                        <h3 class="text-lg font-bold text-white">1. Emitir</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Registro inicial del crédito en la testnet indicando la metadata del proyecto y la cantidad de toneladas asignadas.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-950 text-emerald-400 font-mono font-bold flex items-center justify-center border border-emerald-500/30">
+                            02
+                        </div>
+                        <h3 class="text-lg font-bold text-white">2. Transferir</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Cambio de custodia o transferencia transparente del crédito entre cuentas dentro de la red Stellar.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-950 text-emerald-400 font-mono font-bold flex items-center justify-center border border-emerald-500/30">
+                            03
+                        </div>
+                        <h3 class="text-lg font-bold text-white">3. Retirar</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Quema o retiro definitivo del crédito indicando el beneficiario final, previniendo la doble contabilidad.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Open Query Note -->
+                <div class="mt-8 p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-center max-w-2xl mx-auto">
+                    <p class="text-xs text-slate-300">
+                        <i class="fas fa-circle-info text-emerald-400 mr-1.5"></i>
+                        <strong>Consulta pública:</strong> Cualquiera puede verificar el estado de un crédito de forma directa sin necesidad de crear una cuenta ni conectar una billetera criptográfica.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- WHAT YOU VERIFY SECTION -->
+        <section id="que-verifica" class="py-16 bg-slate-900/40 border-y border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <h2 class="text-3xl font-extrabold text-white">Qué Verifica Usted</h2>
+                    <p class="text-slate-400 text-sm mt-1">Atributos técnicos auditables de forma independiente directamente en la cadena.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                    
+                    <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-start space-x-3">
+                        <i class="fas fa-check-circle text-emerald-400 mt-1"></i>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Existencia del Crédito</h4>
+                            <p class="text-xs text-slate-400">Verificación de que el registro existe en el contrato inteligente.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-start space-x-3">
+                        <i class="fas fa-user-shield text-emerald-400 mt-1"></i>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Propietario Actual</h4>
+                            <p class="text-xs text-slate-400">Titularidad o beneficiario registrado del crédito en tiempo presente.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-start space-x-3">
+                        <i class="fas fa-toggle-on text-emerald-400 mt-1"></i>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Estado Vigente</h4>
+                            <p class="text-xs text-slate-400">Confirmación explícita sobre si el crédito está Activo o Retirado.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-start space-x-3">
+                        <i class="fas fa-clock-rotate-left text-emerald-400 mt-1"></i>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Historial Inmutable</h4>
+                            <p class="text-xs text-slate-400">Trazabilidad completa de ledgers anteriores en la cadena Stellar.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-start space-x-3 sm:col-span-2 lg:col-span-2">
+                        <i class="fas fa-fingerprint text-emerald-400 mt-1"></i>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Huella Criptográfica SHA-256</h4>
+                            <p class="text-xs text-slate-400">Integridad de la metadata y del certificado digital de origen mediante función hash no invertible.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CURRENT LIMITATIONS SECTION -->
+        <section id="limites" class="py-16 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="max-w-3xl mx-auto glass-panel rounded-2xl p-6 sm:p-8 border border-amber-500/30">
+                    <div class="flex items-center space-x-3 pb-4 border-b border-slate-800">
+                        <i class="fas fa-triangle-exclamation text-amber-400 text-xl"></i>
+                        <h2 class="text-xl font-bold text-white">Límites Actuales del Prototipo</h2>
+                    </div>
+
+                    <ul class="space-y-3 pt-4 text-xs sm:text-sm text-slate-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-minus text-amber-400 mr-2.5 mt-1 shrink-0"></i>
+                            <span><strong>Red de pruebas:</strong> Desplegado exclusivamente en Stellar Soroban Testnet.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-minus text-amber-400 mr-2.5 mt-1 shrink-0"></i>
+                            <span><strong>Sin auditoría externa:</strong> El contrato inteligente no cuenta con auditoría formal de seguridad por parte de terceros.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-minus text-amber-400 mr-2.5 mt-1 shrink-0"></i>
+                            <span><strong>Sin acuerdos comerciales:</strong> No existen convenios con verificadores acreditados ni compradores de mercado.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-minus text-amber-400 mr-2.5 mt-1 shrink-0"></i>
+                            <span><strong>Administración centralizada:</strong> La administración del contrato inteligente se gestiona actualmente desde una única cuenta.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- NEXT STEPS SECTION -->
+        <section id="siguientes-pasos" class="py-16 bg-slate-900/30 border-t border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <h2 class="text-2xl font-extrabold text-white">Siguientes Pasos</h2>
+                    <p class="text-slate-400 text-sm">Ruta técnica de desarrollo para futuras iteraciones del proyecto.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+                    
+                    <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-center space-y-2">
+                        <div class="w-8 h-8 rounded-full bg-slate-800 text-emerald-400 flex items-center justify-center mx-auto text-xs font-bold">1</div>
+                        <h4 class="text-xs font-bold text-white">Multifirma (Multisig)</h4>
+                        <p class="text-[11px] text-slate-400">Implementar esquema multisig para la administración del contrato.</p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-center space-y-2">
+                        <div class="w-8 h-8 rounded-full bg-slate-800 text-emerald-400 flex items-center justify-center mx-auto text-xs font-bold">2</div>
+                        <h4 class="text-xs font-bold text-white">Pruebas de Usuario</h4>
+                        <p class="text-[11px] text-slate-400">Validación de usabilidad con 5 usuarios por perfil definido.</p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-center space-y-2">
+                        <div class="w-8 h-8 rounded-full bg-slate-800 text-emerald-400 flex items-center justify-center mx-auto text-xs font-bold">3</div>
+                        <h4 class="text-xs font-bold text-white">Verificador Acreditado</h4>
+                        <p class="text-[11px] text-slate-400">Alianza con una entidad verificadora oficial para la data técnica.</p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-center space-y-2">
+                        <div class="w-8 h-8 rounded-full bg-slate-800 text-emerald-400 flex items-center justify-center mx-auto text-xs font-bold">4</div>
+                        <h4 class="text-xs font-bold text-white">Auditoría Técnica</h4>
+                        <p class="text-[11px] text-slate-400">Auditoría de seguridad del código en Soroban antes de red principal.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-8 text-center text-xs text-slate-400 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p class="font-medium text-slate-300">
+                Proyecto del curso Blockchain Builders 101 (Ruta N). Prototipo en testnet.
+            </p>
+            <div class="flex items-center justify-center gap-4 text-[11px] text-slate-500 pt-2">
+                <a href="https://github.com/emprendamosahora2030-sudo/verde-verificado" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors">
+                    GitHub del Proyecto
+                </a>
+                <span>•</span>
+                <a href="https://stellar.expert/explorer/testnet/contract/CC7ZF3ZK7PGLKZXQASAROTT6WPXRYFP5PV2BQSSUEMEO7VXWE5JKDMLI" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors">
+                    Explorador de Contrato Soroban
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 border border-emerald-500/40 text-white px-4 py-3 rounded-xl shadow-2xl hidden items-center space-x-3 z-50">
+        <i class="fas fa-circle-check text-emerald-400"></i>
+        <span id="toast-msg" class="text-xs font-medium">Texto copiado</span>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Copy SHA-256 Hash to Clipboard
+        function copySHA(shaText) {
+            const tempInput = document.createElement('input');
+            tempInput.value = shaText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = 'Huella SHA-256 copiada al portapapeles';
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('flex');
+            }, 3000);
+        }
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
